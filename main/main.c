@@ -14,7 +14,7 @@ static lv_obj_t *screen1 = NULL;
 static lv_obj_t *screen2 = NULL;
 
 // Configuration de l'affichage et initialisation du materiel
-static void init_display()
+static void waveshare_display_init()
 {
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),   // parametres de base pour LVGL
@@ -68,7 +68,7 @@ static void screen_long_press_event_cb()
 
 void app_main(void)
 { 
-    init_display();
+    waveshare_display_init();
 
     // Creation de l'interface graphique
     bsp_display_lock(0);                                // verrouillage de LVGL pour manipuler les objets
