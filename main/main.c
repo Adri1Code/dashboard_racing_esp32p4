@@ -94,15 +94,9 @@ static void first_screen_cfg()
     lv_obj_add_event_cb(screen1, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
 }
 
-void app_main(void)
-{ 
-    waveshare_display_init();
-
-    // Creation de l'interface graphique
-    bsp_display_lock(0);                                // verrouillage de LVGL pour manipuler les objets
-
-    first_screen_cfg();
-
+// Creation et configuration du second screen
+static void second_screen_cfg()
+{
     // Creation du deuxieme ecran
     screen2 = lv_obj_create( NULL ); 
 
@@ -113,6 +107,18 @@ void app_main(void)
 
     // Changer de screen
     lv_obj_add_event_cb(screen2, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
+}
+
+void app_main(void)
+{ 
+    waveshare_display_init();
+
+    // Creation de l'interface graphique
+    bsp_display_lock(0);                                // verrouillage de LVGL pour manipuler les objets
+
+    first_screen_cfg();
+
+    second_screen_cfg();
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
