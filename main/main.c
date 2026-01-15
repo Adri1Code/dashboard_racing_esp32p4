@@ -43,9 +43,11 @@ static void waveshare_display_init()
 static DIR* sd_card_mount()
 {   // montage sd card 
     ESP_LOGI(TAG, "Montage de la carte SD...");
-    if (bsp_sdcard_mount() != ESP_OK)
+    esp_err_t ret = bsp_sdcard_mount();
+
+    if (ret != ESP_OK)
     {
-        ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
+        ESP_LOGE(TAG, "Erreur montage SD (%s)", esp_err_to_name(ret));
         return NULL;
     } 
      
