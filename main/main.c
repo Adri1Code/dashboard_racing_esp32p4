@@ -7,7 +7,7 @@
 #include "dirent.h"
 
 #define SCREEN_WIDTH 1024
-#define SCREE_HEIGHT 600
+#define SCREEN_HEIGHT 600
 
 #define MOUNT_POINT "/sdcard"
 
