@@ -129,7 +129,6 @@ static void first_screen_cfg()
 // Creation et configuration du second screen
 static void second_screen_cfg()
 {
-    // Creation du deuxieme ecran
     screen2 = lv_obj_create( NULL ); 
 
     lv_obj_t *label2 = lv_label_create(screen2);
