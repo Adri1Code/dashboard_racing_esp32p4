@@ -9,7 +9,7 @@
 #define SCREEN_WIDTH 1024
 #define SCREE_HEIGHT 600
 
-#define MOUNT_POINT "/sd/"
+#define MOUNT_POINT "/sdcard"
 
 static const char *TAG = "APP_MAIN";
 
@@ -46,7 +46,7 @@ static void sd_card_mount_and_scan()
     if (bsp_sdcard_mount() != ESP_OK){
         ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
     }else{
-        const char *path = "/sdcard";
+        const char *path = MOUNT_POINT;
         DIR *dir = opendir(path);
         
         if (dir == NULL)
