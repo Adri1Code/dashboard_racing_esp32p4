@@ -65,7 +65,7 @@ static void sd_card_scan(DIR *dir)
     if (dir != NULL)
     {
         struct dirent *entry;
-        ESP_LOGI(TAG, "--- Contenu de la carte SD");
+        ESP_LOGI(TAG, "--- Contenu de la carte SD ---");
         ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
 
         while ( (entry = readdir(dir)) != NULL )
