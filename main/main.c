@@ -13,9 +13,9 @@ static const char *TAG = "APP_MAIN";
 static lv_obj_t *screen1 = NULL;
 static lv_obj_t *screen2 = NULL;
 
+// Configuration de l'affichage et initialisation du materiel
 static void init_display()
 {
-   // Configuration de l'affichage
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),   // parametres de base pour LVGL
         .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,          // quantite de memoire allouee pour rendu graphique
@@ -26,8 +26,7 @@ static void init_display()
             .sw_rotate = true,                          // pivot de l'affichage
         }
     };
-    
-    // Initialisation du materiel
+
     lv_display_t *disp = bsp_display_start_with_config(&cfg);
     bsp_display_backlight_on();
     bsp_display_brightness_set(100);
