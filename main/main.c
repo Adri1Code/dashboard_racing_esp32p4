@@ -43,30 +43,33 @@ static void waveshare_display_init()
 static void sd_card_mount_and_scan()
 {
     ESP_LOGI(TAG, "Montage de la carte SD...");
-    if (bsp_sdcard_mount() != ESP_OK){
+    if (bsp_sdcard_mount() != ESP_OK)
+    {
         ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
-    }else{
-        const char *path = MOUNT_POINT;
-        DIR *dir = opendir(path);
-        
-        if (dir == NULL)
-        {
-            ESP_LOGW(TAG, "Echec a %s, tentative sur /sd");
-            dir = opendir("/sd");
-        }else{
-            struct dirent *entry;
-            ESP_LOGI(TAG, "--- Contenu de la carte SDs");
-            ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
-
-            while ( (entry = readdir(dir)) != NULL )
-            {
-                ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
-            }
-
-            ESP_LOGI(TAG, "------------------------");
-            closedir(dir);           
-        }    
+        return;
+    } 
+     
+    DIR *dir = opendir(MOUNT_POINT);
+    if (dir == NULL)
+    {
+        ESP_LOGW(TAG, "Echec a %s, tentative sur /sd"); 
+        dir = opendir("/sd");
     }
+
+    if (dir != NULL)
+    {
+        struct dirent *entry;
+        ESP_LOGI(TAG, "--- Contenu de la carte SDs");
+        ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
+
+        while ( (entry = readdir(dir)) != NULL )
+        {
+            ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
+        }
+
+        ESP_LOGI(TAG, "------------------------");
+        closedir(dir);
+    } else{ ESP_LOGE(TAG, "Erreur : Impossible d'accéder au système de fichiers."); }       
 }
 
 // Modifie la luminosite selon le changement sur le slider
