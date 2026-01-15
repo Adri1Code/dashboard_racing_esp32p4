@@ -111,6 +111,8 @@ static void second_screen_cfg()
 
 void app_main(void)
 { 
+    ESP_LOGI(TAG, "Debut du programme");
+
     waveshare_display_init();
 
     // Creation de l'interface graphique
@@ -122,7 +124,7 @@ void app_main(void)
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
-    ESP_LOGI(TAG, "Fin du programme.");
+    ESP_LOGI(TAG, "Fin du programme");
 
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(1000));
