@@ -61,11 +61,12 @@ static void sd_card_mount_and_scan()
         struct dirent *entry;
         ESP_LOGI(TAG, "--- Contenu de la carte SDs");
         ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
-
+        
         while ( (entry = readdir(dir)) != NULL )
         {
+            if ( entry->d_name[0] == '.' || strcmp(entry->d_name, "System Volume Information") == 0 ){ continue; }
             ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
-        }
+        } 
 
         ESP_LOGI(TAG, "------------------------");
         closedir(dir);
