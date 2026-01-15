@@ -39,6 +39,35 @@ static void waveshare_display_init()
     } 
 }
 
+// Monter et lire le contenu de la carte SD
+static void sd_card_mount_and_scan()
+{
+    ESP_LOGI(TAG, "Montage de la carte SD...");
+    if (bsp_sdcard_mount() != ESP_OK){
+        ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
+    }else{
+        const char *path = "/sdcard";
+        DIR *dir = opendir(path);
+        
+        if (dir == NULL)
+        {
+            ESP_LOGW(TAG, "Echec a %s, tentative sur /sd");
+            dir = opendir("/sd");
+        }else{
+            struct dirent *entry;
+            ESP_LOGI(TAG, "--- Contenu de la carte SD");
+
+            while ( (entry = readdir(dir)) != NULL )
+            {
+                ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
+            }
+
+            ESP_LOGI(TAG, "------------------------");
+            closedir(dir);           
+        }    
+    }
+}
+
 // Modifie la luminosite selon le changement sur le slider
 static void brightness_slider_event_cb(lv_event_t* event)
 {
@@ -118,30 +147,7 @@ void app_main(void)
 
     waveshare_display_init();
 
-    ESP_LOGI(TAG, "Montage de la carte SD...");
-    if (bsp_sdcard_mount() != ESP_OK){
-        ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
-    }else{
-        const char *path = "/sdcard";
-        DIR *dir = opendir(path);
-        
-        if (dir == NULL)
-        {
-            ESP_LOGW(TAG, "Echec a %s, tentative sur /sd");
-            dir = opendir("/sd");
-        }else{
-            struct dirent *entry;
-            ESP_LOGI(TAG, "--- Contenu de la carte SD");
-
-            while ( (entry = readdir(dir)) != NULL )
-            {
-                ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
-            }
-
-            ESP_LOGI(TAG, "------------------------");
-            closedir(dir);           
-        }    
-    }
+    sd_card_mount_and_scan();
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
