@@ -89,7 +89,7 @@ void app_main(void)
 
     lv_obj_t *label = lv_label_create(screen1);
     lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
-    lv_label_set_text(label, "Hello World !");
+    lv_label_set_text(label, "Screen 1");
     lv_obj_center(label);                                // centrer le texte
 
     // Changer de screen
