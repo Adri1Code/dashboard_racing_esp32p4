@@ -69,7 +69,7 @@ static void screen_long_press_event_cb()
 static void first_screen_cfg()
 {
     screen1 = lv_obj_create( NULL );                     
-    screen1 = lv_scr_act();
+    lv_scr_load(screen1);
 
     // Slider en haut de l'ecran
     lv_obj_t *slider = lv_slider_create(screen1);       // creer un slider
@@ -115,8 +115,7 @@ void app_main(void)
 
     waveshare_display_init();
 
-    // Creation de l'interface graphique
-    bsp_display_lock(0);                                // verrouillage de LVGL pour manipuler les objets
+    bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
     first_screen_cfg();
 
