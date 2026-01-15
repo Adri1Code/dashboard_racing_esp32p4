@@ -13,6 +13,30 @@ static const char *TAG = "APP_MAIN";
 static lv_obj_t *screen1 = NULL;
 static lv_obj_t *screen2 = NULL;
 
+static void init_display()
+{
+   // Configuration de l'affichage
+    bsp_display_cfg_t cfg = {
+        .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),   // parametres de base pour LVGL
+        .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,          // quantite de memoire allouee pour rendu graphique
+        .double_buffer = BSP_LCD_DRAW_BUFF_DOUBLE,      // rendu plus fluide
+        .flags = {
+            .buff_dma = true,                           // transferts memoire sans CPU
+            .buff_spiram = false,                       // utilise RAM interne plutot que SPIRAM
+            .sw_rotate = true,                          // pivot de l'affichage
+        }
+    };
+    
+    // Initialisation du materiel
+    lv_display_t *disp = bsp_display_start_with_config(&cfg);
+    bsp_display_backlight_on();
+    bsp_display_brightness_set(100);
+
+    if (disp != NULL) {
+        bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
+    } 
+}
+
 // Modifie la luminosite selon le changement sur le slider
 static void brightness_slider_event_cb(lv_event_t* event)
 {
@@ -45,26 +69,7 @@ static void screen_long_press_event_cb()
 
 void app_main(void)
 { 
-    // Configuration de l'affichage
-    bsp_display_cfg_t cfg = {
-        .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),   // parametres de base pour LVGL
-        .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,          // quantite de memoire allouee pour rendu graphique
-        .double_buffer = BSP_LCD_DRAW_BUFF_DOUBLE,      // rendu plus fluide
-        .flags = {
-            .buff_dma = true,                           // transferts memoire sans CPU
-            .buff_spiram = false,                       // utilise RAM interne plutot que SPIRAM
-            .sw_rotate = true,                          // pivot de l'affichage
-        }
-    };
-    
-    // Initialisation du materiel
-    lv_display_t *disp = bsp_display_start_with_config(&cfg);
-    bsp_display_backlight_on();
-    bsp_display_brightness_set(100);
-
-    if (disp != NULL) {
-        bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
-    }
+    init_display();
 
     // Creation de l'interface graphique
     bsp_display_lock(0);                                // verrouillage de LVGL pour manipuler les objets
@@ -108,7 +113,7 @@ void app_main(void)
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
-    ESP_LOGI(TAG, "Hello World affiche avec succes.");
+    ESP_LOGI(TAG, "Fin du programme.");
 
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(1000));
