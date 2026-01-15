@@ -4,9 +4,12 @@
 #include "bsp/esp-bsp.h"    
 #include "bsp/display.h"
 #include "lvgl.h"
+#include "dirent.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREE_HEIGHT 600
+
+#define MOUNT_POINT "/sd/"
 
 static const char *TAG = "APP_MAIN";
 
@@ -114,6 +117,31 @@ void app_main(void)
     ESP_LOGI(TAG, "Debut du programme");
 
     waveshare_display_init();
+
+    ESP_LOGI(TAG, "Montage de la carte SD...");
+    if (bsp_sdcard_mount() != ESP_OK){
+        ESP_LOGE(TAG, "Erreur : Impossible de monter la carte SD");
+    }else{
+        const char *path = "/sdcard";
+        DIR *dir = opendir(path);
+        
+        if (dir == NULL)
+        {
+            ESP_LOGW(TAG, "Echec a %s, tentative sur /sd");
+            dir = opendir("/sd");
+        }else{
+            struct dirent *entry;
+            ESP_LOGI(TAG, "--- Contenu de la carte SD");
+
+            while ( (entry = readdir(dir)) != NULL )
+            {
+                ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
+            }
+
+            ESP_LOGI(TAG, "------------------------");
+            closedir(dir);           
+        }    
+    }
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
