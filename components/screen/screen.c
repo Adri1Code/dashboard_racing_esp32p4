@@ -31,16 +31,23 @@ void screen_long_press_event_cb()
     }
 }
 
+// Afficher du texte sur un écran
+void screen_print_text(lv_obj_t *screen)
+{
+    lv_obj_t *label = lv_label_create(screen);
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
+    lv_label_set_text(label, "Screen 1");
+    lv_obj_center(label);                             
+}
+
+
 // Creation et configuration du premier screen
 void first_screen_cfg()
 {
     screen1 = lv_obj_create( NULL );                     
     lv_scr_load(screen1);
 
-    lv_obj_t *label = lv_label_create(screen1);
-    lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
-    lv_label_set_text(label, "Screen 1");
-    lv_obj_center(label);                                // centrer le texte
+    screen_print_text(screen1);
 
     // Changer de screen
     lv_obj_add_event_cb(screen1, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
