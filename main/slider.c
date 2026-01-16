@@ -1,4 +1,6 @@
 #include "slider.h"
+#include "esp_log.h"  
+#include "bsp/display.h"
 
 static const char *TAG = "SLIDER";
 
