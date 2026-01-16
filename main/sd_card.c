@@ -2,7 +2,7 @@
 
 #define MOUNT_POINT "/sdcard"
 
-static const char *TAG = "APP_MAIN";
+static const char *TAG = "SD_CARD";
 
 // Monter la carte SD
 DIR* sd_card_mount()
