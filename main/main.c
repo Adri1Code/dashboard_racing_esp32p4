@@ -11,9 +11,6 @@
 
 static const char *TAG = "APP_MAIN";
 
-//static lv_obj_t *screen1 = NULL;
-//static lv_obj_t *screen2 = NULL;
-
 // Configuration de l'affichage et initialisation du materiel
 static void waveshare_display_init()
 {
