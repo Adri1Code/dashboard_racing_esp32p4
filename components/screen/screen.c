@@ -37,8 +37,6 @@ void first_screen_cfg()
     screen1 = lv_obj_create( NULL );                     
     lv_scr_load(screen1);
 
-    slider_brightness_cfg(screen1);
-
     lv_obj_t *label = lv_label_create(screen1);
     lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
     lv_label_set_text(label, "Screen 1");
