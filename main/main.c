@@ -6,6 +6,7 @@
 #include "lvgl.h"
 
 #include "sd_card.h"
+#include "slider.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 600
@@ -38,16 +39,6 @@ static void waveshare_display_init()
     } 
 }
 
-// Modifie la luminosite selon le changement sur le slider
-static void brightness_slider_event_cb(lv_event_t* event)
-{
-    lv_obj_t *slider = lv_event_get_target(event);
-    uint32_t value = lv_slider_get_value(slider);
-
-    bsp_display_brightness_set(value);
-
-    ESP_LOGI(TAG, "Luminositee ajustee a : %ld%%", value);
-}
 
 // Changement d'ecran avec pression du doigt
 static void screen_long_press_event_cb()
@@ -67,30 +58,13 @@ static void screen_long_press_event_cb()
     }
 }
 
-// Creation d'un slider avec reglage de la luminosite
-static void slider_brightness_cfg()
-{
-    lv_obj_t *slider = lv_slider_create(screen1);       // creer un slider
-    lv_slider_set_range(slider, 0, 100);                // range du slider
-    lv_slider_set_value(slider, 100, LV_ANIM_OFF);      // valeur initiale
-    lv_obj_set_width(slider, lv_pct(80));               // 80% de la largeur de l'ecran
-    lv_obj_align(slider, LV_ALIGN_TOP_MID, 0, 20);      // aligne en haut au centre
-
-    // Evenement : utilisateur change le slider 
-    lv_obj_add_event_cb(slider, brightness_slider_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
-
-    lv_obj_t *slider_label = lv_label_create(screen1);      
-    lv_label_set_text(slider_label, "Brightness");
-    lv_obj_align_to(slider_label, slider, LV_ALIGN_OUT_BOTTOM_MID, 0, 5);
-}
-
 // Creation et configuration du premier screen
 static void first_screen_cfg()
 {
     screen1 = lv_obj_create( NULL );                     
     lv_scr_load(screen1);
 
-    slider_brightness_cfg();
+    slider_brightness_cfg(screen1);
 
     lv_obj_t *label = lv_label_create(screen1);
     lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
