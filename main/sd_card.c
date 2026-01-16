@@ -16,34 +16,34 @@ DIR* sd_card_mount()
         return NULL;
     } 
      
-    DIR *dir = opendir(MOUNT_POINT);
-    if (dir == NULL)
+    DIR *sd_directory = opendir(MOUNT_POINT);
+    if (sd_directory == NULL)
     {
         ESP_LOGW(TAG, "Echec a %s, tentative sur /sd"); 
-        dir = opendir("/sd");
+        sd_directory = opendir("/sd");
     }
 
-    return dir;
+    return sd_directory;
 }
 
 
 // Lire le contenu de la carte SD
-void sd_card_scan(DIR *dir)
+void sd_card_scan(DIR *sd_directory)
 {
-    if (dir != NULL)
+    if (sd_directory != NULL)
     {
         struct dirent *entry;
         ESP_LOGI(TAG, "--- Contenu de la carte SD ---");
         ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
 
-        while ( (entry = readdir(dir)) != NULL )
+        while ( (entry = readdir(sd_directory)) != NULL )
         {
             if ( entry->d_name[0] == '.' || strcmp(entry->d_name, "System Volume Information") == 0 ){ continue; }
             ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
         } 
 
         ESP_LOGI(TAG, "------------------------");
-        closedir(dir);
+        closedir(sd_directory);
     } else{ ESP_LOGE(TAG, "Erreur : Impossible d'accéder au système de fichiers."); }   
 }
 
