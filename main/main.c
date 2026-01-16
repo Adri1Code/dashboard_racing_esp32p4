@@ -123,7 +123,7 @@ void app_main(void)
 
     DIR* dir = sd_card_mount();
 
-    sd_card_scan(dir);
+    sd_card_scan(&dir);
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 

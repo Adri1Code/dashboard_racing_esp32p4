@@ -8,7 +8,7 @@
 #include "bsp/display.h"
 
 DIR* sd_card_mount();
-void sd_card_scan(DIR* sd_directory);
+void sd_card_scan(DIR** sd_directory);
 
 
 #endif  
