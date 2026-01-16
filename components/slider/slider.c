@@ -5,7 +5,7 @@
 static const char *TAG = "SLIDER";
 
 // Modifie la luminosite selon le changement sur le slider
-void brightness_slider_event_cb(lv_event_t* event)
+void brightness_slider_event_cb(lv_event_t *event)
 {
     lv_obj_t *slider = lv_event_get_target(event);
     uint32_t value = lv_slider_get_value(slider);

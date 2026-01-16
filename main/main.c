@@ -18,7 +18,7 @@ void app_main(void)
 
     waveshare_display_init();
 
-    DIR* dir = sd_card_mount();
+    DIR *dir = sd_card_mount();
 
     sd_card_scan(&dir);
 
