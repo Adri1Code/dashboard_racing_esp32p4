@@ -30,7 +30,7 @@ DIR* sd_card_mount()
 // Lire le contenu de la carte SD
 void sd_card_scan(DIR **sd_directory)
 {
-    if (sd_directory != NULL || *sd_directory != NULL)
+    if (sd_directory != NULL && *sd_directory != NULL)
     {
         struct dirent *entry;
         ESP_LOGI(TAG, "--- Contenu de la carte SD ---");
