@@ -1,6 +1,9 @@
 #include "display_init.h"
 #include "bsp/display.h"
 #include "bsp/esp-bsp.h"    
+#include "esp_log.h"
+
+static const char *TAG = "DISPLAY";
 
 // Configuration de l'affichage et initialisation du materiel
 void waveshare_display_init()
@@ -22,5 +25,7 @@ void waveshare_display_init()
 
     if (disp != NULL) {
         bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
-    } 
+    }
+    
+    ESP_LOGI(TAG, "Display configured");
 }
