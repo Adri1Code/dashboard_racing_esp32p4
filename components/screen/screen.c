@@ -1,5 +1,6 @@
 #include "screen.h"
 #include "slider.h"
+#include "sd_card.h"
 #include "esp_log.h"
 #include "bsp/esp-bsp.h"    
 #include "bsp/display.h"
@@ -47,7 +48,7 @@ void first_screen_cfg()
     screen1 = lv_obj_create( NULL );                     
     lv_scr_load(screen1);
 
-    screen_print_text(screen1);
+    sd_card_load_jpg_on_screen(screen1, "logo.jpg");
 
     // Changer de screen
     lv_obj_add_event_cb(screen1, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);

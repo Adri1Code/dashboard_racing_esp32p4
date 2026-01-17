@@ -1,3 +1,3 @@
 idf_component_register(SRCS "screen.c" 
                     INCLUDE_DIRS "include"
-                    REQUIRES slider fatfs waveshare__esp32_p4_wifi6_touch_lcd_7b)
+                    REQUIRES slider sd_card fatfs waveshare__esp32_p4_wifi6_touch_lcd_7b)

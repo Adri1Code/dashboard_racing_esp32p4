@@ -49,6 +49,29 @@ void sd_card_scan(DIR **sd_directory)
 }
 
 
+// Afficher une image stockee dans la carte SD sur un écran
+void sd_card_load_jpg_on_screen(lv_obj_t *screen, const char *jpg_filename)
+{
+    ESP_LOGI(TAG, "Chargement d'une image depuis la carte SD...");
+
+    char lvgl_jpg_path[128];
+
+    // On ajoute le préfixe "A:" pour que LVGL utilise son driver POSIX
+    snprintf(lvgl_jpg_path, sizeof(lvgl_jpg_path), "A:%s/%s", MOUNT_POINT, jpg_filename);
+
+    ESP_LOGI(TAG, "Chemin de l'image pour LVGL : %s", lvgl_jpg_path);
+
+    lv_obj_t *image = lv_img_create(screen);
+    if (image == NULL) return;
+
+    // LVGL va maintenant intercepter "A:", voir qu'il s'agit du driver POSIX,
+    // et ouvrir le fichier en interne.
+    lv_img_set_src(image, lvgl_jpg_path);
+    lv_obj_center(image);
+
+    ESP_LOGI(TAG, "L'image est affichee");
+}
+
 
 
 

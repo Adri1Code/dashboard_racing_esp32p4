@@ -27,5 +27,14 @@ void waveshare_display_init()
         bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
     }
     
-    ESP_LOGI(TAG, "Display configured");
+    ESP_LOGI(TAG, "Affichage configuré");
+
+#if LV_USE_FS_POSIX
+    lv_fs_posix_init(); 
+    ESP_LOGI(TAG, "LVGL FS POSIX initialisé");
+#elif LV_USE_FS_FATFS
+    lv_fs_fatfs_init();
+    ESP_LOGI(TAG, "LVGL FS FATFS initialisé");
+#endif
+
 }
