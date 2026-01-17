@@ -70,9 +70,10 @@ void first_screen_cfg()
     lv_scr_load(screen1);
 
     sd_card_load_jpg_on_screen(screen1, "logo.jpg");
-
-    // Creer un timer qui se declenche tous les 2 secondes
-    lv_timer_create(timer_to_change_screen, 2000, &timer_call_counter);            
+      
+    lv_timer_t *timer = lv_timer_create_basic();
+    lv_timer_set_period(timer, 2000);
+    lv_timer_set_cb(timer, timer_to_change_screen);
 
     // Changer de screen
     //lv_obj_add_event_cb(screen1, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
