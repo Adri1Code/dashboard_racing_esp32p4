@@ -59,10 +59,12 @@ void second_screen_cfg()
 {
     screen2 = lv_obj_create( NULL ); 
 
-    lv_obj_t *label2 = lv_label_create(screen2);
-    lv_obj_set_style_text_font(label2, &lv_font_montserrat_44, 0);
-    lv_label_set_text(label2, "Screen 2");
-    lv_obj_center(label2);
+    sd_card_load_jpg_on_screen(screen2, "config_led_std.jpg");
+
+    //lv_obj_t *label2 = lv_label_create(screen2);
+    //lv_obj_set_style_text_font(label2, &lv_font_montserrat_44, 0);
+    //lv_label_set_text(label2, "Screen 2");
+    //lv_obj_center(label2);
 
     // Changer de screen
     lv_obj_add_event_cb(screen2, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
