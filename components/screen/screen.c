@@ -100,6 +100,8 @@ void third_screen_cfg()
 {
     screen3 = lv_obj_create( NULL ); 
 
+    slider_brightness_cfg(screen3);
+
     lv_obj_t *label3 = lv_label_create(screen3);
     lv_obj_set_style_text_font(label3, &lv_font_montserrat_44, 0);
     lv_label_set_text(label3, "Screen 3");
