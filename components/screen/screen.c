@@ -71,8 +71,9 @@ void first_screen_cfg()
 
     sd_card_load_jpg_on_screen(screen1, "logo.jpg");
       
+    // delai ?
     lv_timer_t *timer = lv_timer_create_basic();
-    lv_timer_set_period(timer, 2000);
+    lv_timer_set_period(timer, 3000);
     lv_timer_set_cb(timer, timer_to_change_screen);
 
     // Changer de screen
