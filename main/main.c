@@ -28,6 +28,8 @@ void app_main(void)
 
     second_screen_cfg();
 
+    third_screen_cfg();
+
     bsp_display_unlock();                                // deverouillage de LVGL
 
     ESP_LOGI(TAG, "Fin du programme");
