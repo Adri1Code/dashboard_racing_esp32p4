@@ -16,11 +16,11 @@ DIR *sd_card_mount()
         return NULL;
     } 
      
-    DIR *sd_directory = opendir(MOUNT_POINT);
+    DIR *sd_directory = opendir( MOUNT_POINT );
     if (sd_directory == NULL)
     {
         ESP_LOGW(TAG, "Echec a %s, tentative sur /sd"); 
-        sd_directory = opendir("/sd");
+        sd_directory = opendir( "/sd" );
     }
 
     return sd_directory;
@@ -43,7 +43,7 @@ void sd_card_scan(DIR **sd_directory)
         } 
 
         ESP_LOGI(TAG, "------------------------");
-        closedir(*sd_directory);                        // libere les ressources internes
+        closedir( *sd_directory );                        // libere les ressources internes
         *sd_directory = NULL;                           // securise le pointeur pour le reste du programme
     } else{ ESP_LOGE(TAG, "Erreur : Impossible d'accéder au système de fichiers."); }   
 }
@@ -61,13 +61,13 @@ void sd_card_load_jpg_on_screen(lv_obj_t *screen, const char *jpg_filename)
 
     ESP_LOGI(TAG, "Chemin de l'image pour LVGL : %s", lvgl_jpg_path);
 
-    lv_obj_t *image = lv_img_create(screen);
+    lv_obj_t *image = lv_img_create( screen );
     if (image == NULL) return;
 
     // LVGL va maintenant intercepter "A:", voir qu'il s'agit du driver POSIX,
     // et ouvrir le fichier en interne.
     lv_img_set_src(image, lvgl_jpg_path);
-    lv_obj_center(image);
+    lv_obj_center( image );
 
     ESP_LOGI(TAG, "L'image est affichee");
 }

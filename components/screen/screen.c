@@ -48,27 +48,25 @@ void timer_to_change_screen(lv_timer_t *timer)
         ESP_LOGI(TAG, "Passage a l'ecran suivant");
         lv_scr_load_anim(screen2, LV_SCR_LOAD_ANIM_MOVE_LEFT, 200, 0, false);
 
-        lv_timer_del(timer);
+        lv_timer_del( timer );
         timer_call_counter = 0;
     }
 }
 
-
 // Afficher du texte sur un écran
 void screen_print_text(lv_obj_t *screen)
 {
-    lv_obj_t *label = lv_label_create(screen);
+    lv_obj_t *label = lv_label_create( screen );
     lv_obj_set_style_text_font(label, &lv_font_montserrat_44, 0);
     lv_label_set_text(label, "Screen 1");
-    lv_obj_center(label);                             
+    lv_obj_center( label );                             
 }
-
 
 // Creation et configuration du premier screen
 void first_screen_cfg()
 {
     screen1 = lv_obj_create( NULL );                     
-    lv_scr_load(screen1);
+    lv_scr_load( screen1 );
 
     sd_card_load_jpg_on_screen(screen1, "logo.jpg");
       
@@ -76,7 +74,6 @@ void first_screen_cfg()
     lv_timer_t *timer = lv_timer_create_basic();
     lv_timer_set_period(timer, 3000);
     lv_timer_set_cb(timer, timer_to_change_screen);
-
 }
 
 // Creation et configuration du second screen
@@ -100,12 +97,12 @@ void third_screen_cfg()
 {
     screen3 = lv_obj_create( NULL ); 
 
-    slider_brightness_cfg(screen3);
+    slider_brightness_cfg( screen3 );
 
-    lv_obj_t *label3 = lv_label_create(screen3);
+    lv_obj_t *label3 = lv_label_create( screen3 );
     lv_obj_set_style_text_font(label3, &lv_font_montserrat_44, 0);
     lv_label_set_text(label3, "Screen 3");
-    lv_obj_center(label3);
+    lv_obj_center( label3 );
 }
 
 
