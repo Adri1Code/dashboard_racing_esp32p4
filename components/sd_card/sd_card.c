@@ -1,3 +1,5 @@
+#include <sys/stat.h>
+#include <stdio.h>
 #include "sd_card.h"
 
 #define MOUNT_POINT "/sdcard"
@@ -35,13 +37,24 @@ void sd_card_scan(DIR **sd_directory)
     if (sd_directory != NULL && *sd_directory != NULL)
     {
         struct dirent *entry;
+        struct stat file_info;          // to store file metadata
         ESP_LOGI(TAG, "--- Contenu de la carte SD ---");
         ESP_LOGI(TAG, "Chemin: %s", MOUNT_POINT);
 
-        while ( (entry = readdir(*sd_directory)) != NULL )
+        // loop over all items in the path
+        while ( (entry = readdir( *sd_directory )) != NULL )
         {
             if ( entry->d_name[0] == '.' || strcmp(entry->d_name, "System Volume Information") == 0 ){ continue; }
-            ESP_LOGI(TAG, "Trouvé: %s", entry->d_name);
+
+            char file_path[512];
+            
+            snprintf(file_path, sizeof(file_path), "%s/%s", MOUNT_POINT, entry->d_name);
+
+            if ( stat(file_path, &file_info) == 0 ) 
+            {
+                float file_size_kb = file_info.st_size / 1024.0;
+                ESP_LOGI(TAG, "Fichier: %s -%7.2f Ko", entry->d_name, file_size_kb);                
+            }
         } 
 
         ESP_LOGI(TAG, "------------------------");
