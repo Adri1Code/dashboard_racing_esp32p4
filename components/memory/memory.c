@@ -10,9 +10,9 @@ void ram_static_analysis(){
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
     size_t total_ram_internal = heap_caps_get_total_size( MALLOC_CAP_INTERNAL );
     float ram_occupancy_ratio = (1.0f - ((float)free_ram_internal / total_ram_internal)) * 100.0f;
-    ESP_LOGI(TAG, "RAM interne : Libre: %d Ko", free_ram_internal / 1024); 
-    ESP_LOGI(TAG, "RAM interne : Totale: %d Ko", total_ram_internal / 1024);
-    ESP_LOGI(TAG, "RAM interne : Pleine à %.2f%%", ram_occupancy_ratio); 
+    ESP_LOGI(TAG, "RAM (INTERNE) : Libre: %d Ko", free_ram_internal / 1024); 
+    ESP_LOGI(TAG, "RAM (INTERNE) : Totale: %d Ko", total_ram_internal / 1024);
+    ESP_LOGI(TAG, "RAM (INTERNE) : Pleine à %.2f%%", ram_occupancy_ratio); 
 }
 
 void psram_static_analysis()
