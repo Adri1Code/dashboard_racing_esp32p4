@@ -78,7 +78,7 @@ void first_screen_cfg()
     lv_timer_set_cb(timer, timer_to_change_screen);
 }
 
-// Creation et configuration du second screen
+// Creation et configuration du deuxieme screen
 void second_screen_cfg()
 {
     screen2 = lv_obj_create( NULL ); 
@@ -94,7 +94,7 @@ void second_screen_cfg()
     lv_obj_add_event_cb(screen2, screen_long_press_event_cb, LV_EVENT_LONG_PRESSED, NULL);
 }
 
-
+// Creation et configuration du troisieme screen
 void third_screen_cfg()
 {
     screen3 = lv_obj_create( NULL ); 

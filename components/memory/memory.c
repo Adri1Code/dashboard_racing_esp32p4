@@ -4,6 +4,7 @@
 
 static const char *TAG = "MEMORY";
 
+// Afficher stats de la RAM
 void ram_static_analysis(){
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
@@ -15,6 +16,7 @@ void ram_static_analysis(){
     ESP_LOGI(TAG, "RAM (INTERNE) : Pleine à %.2f%%", ram_occupancy_ratio); 
 }
 
+// Afficher stats de la PSRAM
 void psram_static_analysis()
 {
     LOG_BREAK;
@@ -30,6 +32,7 @@ void psram_static_analysis()
     } else{ ESP_LOGW(TAG, "PSRAM non detectee"); }
 }
 
+// Afficher stats de la FLASH
 void flash_static_analysis()
 {
     LOG_BREAK;
