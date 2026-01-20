@@ -6,7 +6,8 @@ static const char *TAG = "SD_CARD";
 
 // Monter la carte SD
 DIR *sd_card_mount()
-{   // montage sd card 
+{  
+    printf("\n"); 
     ESP_LOGI(TAG, "Montage de la carte SD...");
     esp_err_t ret = bsp_sdcard_mount();
 
@@ -52,6 +53,7 @@ void sd_card_scan(DIR **sd_directory)
 // Afficher une image stockee dans la carte SD sur un écran
 void sd_card_load_jpg_on_screen(lv_obj_t *screen, const char *jpg_filename)
 {
+    printf("\n");
     ESP_LOGI(TAG, "Chargement d'une image depuis la carte SD...");
 
     char lvgl_jpg_path[128];

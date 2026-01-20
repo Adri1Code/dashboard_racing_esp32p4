@@ -19,16 +19,19 @@ static const char *TAG = "APP_MAIN";
 
 void app_main(void)
 { 
+    printf("\n");
     ESP_LOGI(TAG, "Debut du programme");
 
     waveshare_display_init();
 
     // INFOS RAM + INFOS FLASH
+    printf("\n");
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
     size_t total_ram_internal = heap_caps_get_total_size( MALLOC_CAP_INTERNAL );
     ESP_LOGI(TAG, "RAM interne : Libre: %d Ko / Totale: %d Ko", free_ram_internal / 1024 , total_ram_internal / 1024);
 
+    printf("\n");
     ESP_LOGI(TAG, "============ ANALYSE PSRAM ============");
     size_t free_psram_internal = heap_caps_get_free_size( MALLOC_CAP_SPIRAM );
     size_t total_psram_internal = heap_caps_get_total_size( MALLOC_CAP_SPIRAM );
@@ -39,12 +42,13 @@ void app_main(void)
         ESP_LOGW(TAG, "PSRAM non detectee"); 
     }
 
+    printf("\n");
     ESP_LOGI(TAG, "============ ANALYSE FLASH ============");
     uint32_t flash_size;
     esp_flash_get_size(NULL, &flash_size);
     ESP_LOGI(TAG, "Taille de la FLASH : %lu Mo", flash_size / 1024 * 1024);
 
-    ESP_LOGI(TAG, "Detail du fichier partitions.csv");
+    ESP_LOGI(TAG, "Detail du fichier partitions.csv :");
     esp_partition_iterator_t partition_iterator = esp_partition_find(ESP_PARTITION_TYPE_ANY, ESP_PARTITION_SUBTYPE_ANY, NULL);
 
     while(partition_iterator != NULL)
@@ -70,6 +74,7 @@ void app_main(void)
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
+    printf("\n");
     ESP_LOGI(TAG, "Fin du programme");
 
     while (1) {
