@@ -46,7 +46,7 @@ void flash_static_analysis()
     ESP_LOGI(TAG, "============ ANALYSE FLASH ============");
     uint32_t flash_size;
     esp_flash_get_size(NULL, &flash_size);
-    ESP_LOGI(TAG, "Taille de la FLASH : %lu Mo", flash_size / 1024 * 1024);
+    ESP_LOGI(TAG, "Taille de la FLASH : %lu Mo", flash_size / (1024 * 1024));
 
     ESP_LOGI(TAG, "Detail du fichier partitions.csv :");
     esp_partition_iterator_t partition_iterator = esp_partition_find(ESP_PARTITION_TYPE_ANY, ESP_PARTITION_SUBTYPE_ANY, NULL);
