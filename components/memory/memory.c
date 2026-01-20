@@ -9,8 +9,10 @@ void ram_static_analysis(){
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
     size_t total_ram_internal = heap_caps_get_total_size( MALLOC_CAP_INTERNAL );
+    float ram_occupancy_ratio = (1.0f - ((float)free_ram_internal / total_ram_internal)) * 100.0f;
     ESP_LOGI(TAG, "RAM interne : Libre: %d Ko", free_ram_internal / 1024); 
-    ESP_LOGI(TAG, "RAM interne : Totale: %d Ko", total_ram_internal / 1024); 
+    ESP_LOGI(TAG, "RAM interne : Totale: %d Ko", total_ram_internal / 1024);
+    ESP_LOGI(TAG, "RAM interne : Pleine à %.2f%%", ram_occupancy_ratio); 
 }
 
 void psram_static_analysis()
@@ -19,10 +21,12 @@ void psram_static_analysis()
     ESP_LOGI(TAG, "============ ANALYSE PSRAM ============");
     size_t free_psram_internal = heap_caps_get_free_size( MALLOC_CAP_SPIRAM );
     size_t total_psram_internal = heap_caps_get_total_size( MALLOC_CAP_SPIRAM );
+    float psram_occupancy_ratio = (1.0f - ((float)free_psram_internal / total_psram_internal)) * 100.0f;
     if(total_psram_internal > 0)
     {
         ESP_LOGI(TAG, "PSRAM (EXTERNE) : Libre: %d Ko", free_psram_internal / 1024);
         ESP_LOGI(TAG, "PSRAM (EXTERNE) : Totale: %d Ko", total_psram_internal / 1024); 
+        ESP_LOGI(TAG, "PSRAM (EXTERNE) : Pleine à %.2f%%", psram_occupancy_ratio);  
     } else{ ESP_LOGW(TAG, "PSRAM non detectee"); }
 }
 
