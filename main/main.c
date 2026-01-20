@@ -18,20 +18,16 @@
 
 static const char *TAG = "APP_MAIN";
 
-void app_main(void)
-{ 
-    LOG_BREAK;
-    ESP_LOGI(TAG, "Debut du programme");
-
-    waveshare_display_init();
-
-    // INFOS RAM + INFOS FLASH
+void ram_static_analysis(){
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
     size_t total_ram_internal = heap_caps_get_total_size( MALLOC_CAP_INTERNAL );
-    ESP_LOGI(TAG, "RAM interne : Libre: %d Ko / Totale: %d Ko", free_ram_internal / 1024 , total_ram_internal / 1024);
+    ESP_LOGI(TAG, "RAM interne : Libre: %d Ko / Totale: %d Ko", free_ram_internal / 1024 , total_ram_internal / 1024); 
+}
 
+void psram_static_analysis()
+{
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE PSRAM ============");
     size_t free_psram_internal = heap_caps_get_free_size( MALLOC_CAP_SPIRAM );
@@ -42,7 +38,10 @@ void app_main(void)
     }else{
         ESP_LOGW(TAG, "PSRAM non detectee"); 
     }
+}
 
+void flash_static_analysis()
+{
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE FLASH ============");
     uint32_t flash_size;
@@ -60,6 +59,19 @@ void app_main(void)
     }
 
     esp_partition_iterator_release(partition_iterator);
+}
+
+
+void app_main(void)
+{ 
+    LOG_BREAK;
+    ESP_LOGI(TAG, "Debut du programme");
+
+    waveshare_display_init();
+
+    ram_static_analysis();
+    psram_static_analysis();
+    flash_static_analysis();
 
     DIR *dir = sd_card_mount();
 
