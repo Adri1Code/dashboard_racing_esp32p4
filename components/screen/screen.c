@@ -8,6 +8,7 @@
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 600
+#define LOG_BREAK printf("\n")
 
 static const char *TAG = "SCREEN";
 
@@ -39,6 +40,7 @@ void timer_to_change_screen(lv_timer_t *timer)
 {
     timer_call_counter++; 
 
+    LOG_BREAK;
     ESP_LOGI(TAG, "Nombre de declenchements du timer: %d", timer_call_counter); 
     ESP_LOGI(TAG, "Temps ecoule: %d * 2000ms = %dms", timer_call_counter, timer_call_counter * 2000);
 

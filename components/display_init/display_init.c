@@ -3,6 +3,8 @@
 #include "bsp/esp-bsp.h"    
 #include "esp_log.h"
 
+#define LOG_BREAK printf("\n")
+
 static const char *TAG = "DISPLAY";
 
 // Configuration de l'affichage et initialisation du materiel
@@ -27,7 +29,7 @@ void waveshare_display_init()
         bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
     }
     
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "Affichage configuré");
 
 #if LV_USE_FS_POSIX

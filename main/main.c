@@ -9,29 +9,30 @@
 #include "bsp/esp-bsp.h"    
 #include "bsp/display.h"
 #include "lvgl.h"
-
 #include "display_init.h"
 #include "sd_card.h"
 #include "slider.h"
 #include "screen.h"
 
+#define LOG_BREAK printf("\n")
+
 static const char *TAG = "APP_MAIN";
 
 void app_main(void)
 { 
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "Debut du programme");
 
     waveshare_display_init();
 
     // INFOS RAM + INFOS FLASH
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
     size_t total_ram_internal = heap_caps_get_total_size( MALLOC_CAP_INTERNAL );
     ESP_LOGI(TAG, "RAM interne : Libre: %d Ko / Totale: %d Ko", free_ram_internal / 1024 , total_ram_internal / 1024);
 
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE PSRAM ============");
     size_t free_psram_internal = heap_caps_get_free_size( MALLOC_CAP_SPIRAM );
     size_t total_psram_internal = heap_caps_get_total_size( MALLOC_CAP_SPIRAM );
@@ -42,7 +43,7 @@ void app_main(void)
         ESP_LOGW(TAG, "PSRAM non detectee"); 
     }
 
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE FLASH ============");
     uint32_t flash_size;
     esp_flash_get_size(NULL, &flash_size);
@@ -74,7 +75,7 @@ void app_main(void)
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
-    printf("\n");
+    LOG_BREAK;
     ESP_LOGI(TAG, "Fin du programme");
 
     while (1) {
