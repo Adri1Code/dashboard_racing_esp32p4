@@ -13,5 +13,5 @@ idf_component_register(
                 "components" 
                 "fonts"
                 "screens" 
-    REQUIRES lvgl  
+    REQUIRES lvgl display_init memory screen sd_card slider 
 )

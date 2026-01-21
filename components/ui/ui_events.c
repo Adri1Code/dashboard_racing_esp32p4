@@ -4,8 +4,21 @@
 // Project name: SquareLine_Project
 
 #include "ui.h"
+#include "nvs.h"
+#include "bsp/display.h"
+#include "slider.h"
 
-void fan_speed_value(lv_event_t * e)
+static const char *TAG_SLIDER_EVENT = "SLIDER_EVENT";
+
+void brightness_slider_event_cb(lv_event_t * e)
 {
-	// Your code here
+	lv_obj_t *slider = lv_event_get_target( e );
+    uint32_t value = lv_slider_get_value( slider );
+
+    if (value <= 10) value = 10;
+
+    bsp_display_brightness_set( value );
+    save_brightness_to_nvs( value );
+
+    ESP_LOGI(TAG_SLIDER_EVENT, "Luminositee ajustee a : %ld%%", value);
 }

@@ -16,7 +16,10 @@ extern void ui_Screen1_screen_destroy(void);
 extern lv_obj_t *ui_Screen1;
 extern lv_obj_t *ui_HelloWorldBox;
 extern lv_obj_t *ui_HelloWorld;
+extern void ui_event_sliderbrightness( lv_event_t * e);
+extern lv_obj_t *ui_sliderbrightness;
 // CUSTOM VARIABLES
+extern lv_obj_t *uic_sliderbrightness;
 
 #ifdef __cplusplus
 } /*extern "C"*/
