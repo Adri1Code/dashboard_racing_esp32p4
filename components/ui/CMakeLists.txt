@@ -1,17 +1,7 @@
-file(GLOB_RECURSE SOURCES 
-    "ui.c"
-    "ui_helpers.c"
-    "ui_events.c"
-    "components/*.c"
-    "fonts/*.c"
-    "screens/*.c"
-)
+SET(SOURCES screens/ui_Screen1.c
+    ui.c
+    components/ui_comp_hook.c
+    ui_helpers.c
+    ui_events.c)
 
-idf_component_register(
-    SRCS ${SOURCES}
-    INCLUDE_DIRS "." 
-                "components" 
-                "fonts"
-                "screens" 
-    REQUIRES lvgl display_init memory screen sd_card slider 
-)
+add_library(ui ${SOURCES})

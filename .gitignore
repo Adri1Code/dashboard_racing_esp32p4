@@ -32,3 +32,5 @@ sdkconfig.defaults.old
 # Dépendances
 managed_components/
 dependencies.lock
+
+components/ui/ui_events.c
