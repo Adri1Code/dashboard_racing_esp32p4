@@ -11,6 +11,7 @@
 #include "screen.h"
 #include "memory.h"
 #include "ui.h"
+#include "ui_manager.h"
 
 #define LOG_BREAK printf("\n")
 
@@ -41,15 +42,7 @@ void app_main(void)
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
-    ui_init();
-
-    if (ui_sliderbrightness != NULL)
-    {
-        lv_obj_add_event_cb(ui_sliderbrightness, brightness_slider_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
-        uint32_t saved_value = load_brightness_from_nvs();
-        lv_slider_set_value(ui_sliderbrightness, saved_value, LV_ANIM_OFF);
-        bsp_display_brightness_set(saved_value);
-    }
+    ui_manager_init();
 
     //first_screen_cfg();
 
