@@ -43,14 +43,12 @@ void app_main(void)
 
     ui_init();
 
-    // lire en NVS la valeur du slider
-    uint32_t saved_value = load_brightness_from_nvs();
-
-    bsp_display_brightness_set(saved_value);
-
     if (ui_sliderbrightness != NULL)
     {
+        lv_obj_add_event_cb(ui_sliderbrightness, brightness_slider_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
+        uint32_t saved_value = load_brightness_from_nvs();
         lv_slider_set_value(ui_sliderbrightness, saved_value, LV_ANIM_OFF);
+        bsp_display_brightness_set(saved_value);
     }
 
     //first_screen_cfg();

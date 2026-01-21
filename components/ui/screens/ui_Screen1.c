@@ -8,13 +8,6 @@
 lv_obj_t *uic_sliderbrightness;
 lv_obj_t *ui_Screen1 = NULL;lv_obj_t *ui_HelloWorldBox = NULL;lv_obj_t *ui_HelloWorld = NULL;lv_obj_t *ui_sliderbrightness = NULL;
 // event funtions
-void ui_event_sliderbrightness( lv_event_t * e) {
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-if ( event_code == LV_EVENT_VALUE_CHANGED) {
-      brightness_slider_event_cb( e );
-}
-}
 
 // build funtions
 
@@ -64,7 +57,6 @@ lv_obj_set_style_bg_opa(ui_sliderbrightness, 255, LV_PART_KNOB| LV_STATE_DEFAULT
 lv_obj_set_style_bg_grad_color(ui_sliderbrightness, lv_color_hex(0xF8EBEB), LV_PART_KNOB | LV_STATE_DEFAULT );
 lv_obj_set_style_bg_grad_dir(ui_sliderbrightness, LV_GRAD_DIR_HOR, LV_PART_KNOB| LV_STATE_DEFAULT);
 
-lv_obj_add_event_cb(ui_sliderbrightness, ui_event_sliderbrightness, LV_EVENT_ALL, NULL);
 uic_sliderbrightness = ui_sliderbrightness;
 
 }
