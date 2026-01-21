@@ -13,6 +13,8 @@ void brightness_slider_event_cb(lv_event_t *event)
     lv_obj_t *slider = lv_event_get_target( event );
     uint32_t value = lv_slider_get_value( slider );
 
+    if (value <= 10) value = 10;
+
     bsp_display_brightness_set( value );
     save_brightness_to_nvs( value );
 
