@@ -1,4 +1,4 @@
-# 1. On liste les sources manuellement pour être précis ou on utilise GLOB
+# On liste les sources manuellement pour être précis ou on utilise GLOB
 file(GLOB_RECURSE SOURCES 
     "ui.c"
     "ui_helpers.c"
@@ -8,7 +8,7 @@ file(GLOB_RECURSE SOURCES
     "screens/*.c"
 )
 
-# 2. Enregistrement du composant pour l'ESP32
+# Enregistrement du composant pour l'ESP32
 idf_component_register(
     SRCS ${SOURCES}
     INCLUDE_DIRS "." 
