@@ -34,3 +34,4 @@ managed_components/
 dependencies.lock
 
 components/ui/ui_events.c
+components/ui/project.info
