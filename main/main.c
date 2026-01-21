@@ -3,6 +3,7 @@
 #include "bsp/esp-bsp.h"    
 #include "bsp/display.h"
 #include "lvgl.h"
+#include "nvs.h"
 #include "nvs_flash.h"
 #include "display_init.h"
 #include "sd_card.h"
@@ -41,6 +42,16 @@ void app_main(void)
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
     ui_init();
+
+    // lire en NVS la valeur du slider
+    uint32_t saved_value = load_brightness_from_nvs();
+
+    bsp_display_brightness_set(saved_value);
+
+    if (ui_sliderbrightness != NULL)
+    {
+        lv_slider_set_value(ui_sliderbrightness, saved_value, LV_ANIM_OFF);
+    }
 
     //first_screen_cfg();
 
