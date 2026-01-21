@@ -42,13 +42,7 @@ void app_main(void)
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
-    ui_manager_init();
-
-    //first_screen_cfg();
-
-    //second_screen_cfg();
-
-    //third_screen_cfg();
+    ui_manager();
 
     bsp_display_unlock();                                // deverouillage de LVGL
 

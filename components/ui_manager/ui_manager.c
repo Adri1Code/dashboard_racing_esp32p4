@@ -6,7 +6,7 @@
 
 static const char *TAG = "UI_MANAGER";
 
-void ui_manager_init(void)
+void ui_manager(void)
 {
     ESP_LOGI(TAG, "Initialisation de l'interface utilisateur...");
 
