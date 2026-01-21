@@ -9,6 +9,7 @@
 #include "slider.h"
 #include "screen.h"
 #include "memory.h"
+#include "ui.h"
 
 #define LOG_BREAK printf("\n")
 
@@ -39,11 +40,13 @@ void app_main(void)
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
-    first_screen_cfg();
+    ui_init();
 
-    second_screen_cfg();
+    //first_screen_cfg();
 
-    third_screen_cfg();
+    //second_screen_cfg();
+
+    //third_screen_cfg();
 
     bsp_display_unlock();                                // deverouillage de LVGL
 

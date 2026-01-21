@@ -28,7 +28,7 @@ void waveshare_display_init()
     if (disp != NULL) {
         bsp_display_rotate(disp, LV_DISPLAY_ROTATION_180);
     }
-    
+
     LOG_BREAK;
     ESP_LOGI(TAG, "Affichage configuré");
 
