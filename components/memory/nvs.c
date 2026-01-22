@@ -16,7 +16,7 @@ void save_brightness_to_nvs(uint32_t value)
 }
 
 // Lire une valeur en NVS
-uint32_t load_brightness_from_nvs()
+uint32_t load_brightness_from_nvs(void)
 {
     nvs_handle_t my_handle;
     uint32_t value = 100;

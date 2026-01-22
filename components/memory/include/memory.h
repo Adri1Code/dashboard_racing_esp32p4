@@ -10,9 +10,9 @@
 #include "esp_log.h"
 #include "spi_flash_mmap.h"
 
-void ram_static_analysis();
-void psram_static_analysis();
-void flash_static_analysis();
+void ram_static_analysis(void);
+void psram_static_analysis(void);
+void flash_static_analysis(void);
 
 
 #endif

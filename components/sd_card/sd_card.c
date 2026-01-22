@@ -8,7 +8,7 @@
 static const char *TAG = "SD_CARD";
 
 // Monter la carte SD
-DIR *sd_card_mount()
+DIR *sd_card_mount(void)
 {  
     LOG_BREAK; 
     ESP_LOGI(TAG, "Montage de la carte SD...");

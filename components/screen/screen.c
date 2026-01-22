@@ -18,7 +18,7 @@ static lv_obj_t *screen3 = NULL;
 static uint32_t timer_call_counter = 0;
 
 // Changement d'ecran avec pression du doigt
-void screen_long_press_event_cb()
+void screen_long_press_event_cb(void)
 {
     lv_point_t point;
     lv_indev_get_point(lv_indev_get_act(), &point);
@@ -65,7 +65,7 @@ void screen_print_text(lv_obj_t *screen)
 }
 
 // Creation et configuration du premier screen
-void first_screen_cfg()
+void first_screen_cfg(void)
 {
     screen1 = lv_obj_create( NULL );                     
     lv_scr_load( screen1 );
@@ -79,7 +79,7 @@ void first_screen_cfg()
 }
 
 // Creation et configuration du deuxieme screen
-void second_screen_cfg()
+void second_screen_cfg(void)
 {
     screen2 = lv_obj_create( NULL ); 
 
@@ -95,7 +95,7 @@ void second_screen_cfg()
 }
 
 // Creation et configuration du troisieme screen
-void third_screen_cfg()
+void third_screen_cfg(void)
 {
     screen3 = lv_obj_create( NULL ); 
 

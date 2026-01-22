@@ -5,7 +5,7 @@
 static const char *TAG = "MEMORY";
 
 // Afficher stats de la RAM
-void ram_static_analysis(){
+void ram_static_analysis(void){
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE RAM ============");
     size_t free_ram_internal = heap_caps_get_free_size( MALLOC_CAP_INTERNAL );
@@ -17,7 +17,7 @@ void ram_static_analysis(){
 }
 
 // Afficher stats de la PSRAM
-void psram_static_analysis()
+void psram_static_analysis(void)
 {
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE PSRAM ============");
@@ -33,7 +33,7 @@ void psram_static_analysis()
 }
 
 // Afficher stats de la FLASH
-void flash_static_analysis()
+void flash_static_analysis(void)
 {
     LOG_BREAK;
     ESP_LOGI(TAG, "============ ANALYSE FLASH ============");

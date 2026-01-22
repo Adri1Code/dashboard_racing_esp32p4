@@ -8,7 +8,7 @@
 static const char *TAG = "DISPLAY";
 
 // Configuration de l'affichage et initialisation du materiel
-void waveshare_display_init()
+void waveshare_display_init(void)
 {
     bsp_display_cfg_t cfg = {
         .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),   // parametres de base pour LVGL
