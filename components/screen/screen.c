@@ -18,7 +18,7 @@ static lv_obj_t *screen3 = NULL;
 static uint32_t timer_call_counter = 0;
 
 // Changement d'ecran avec pression du doigt
-void screen_long_press_event_cb(void)
+void screen_long_press_event_cb(lv_event_t *event)
 {
     lv_point_t point;
     lv_indev_get_point(lv_indev_get_act(), &point);

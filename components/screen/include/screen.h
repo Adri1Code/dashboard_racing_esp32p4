@@ -5,7 +5,7 @@
 
 #include "lvgl.h"
 
-void screen_long_press_event_cb(void);
+void screen_long_press_event_cb(lv_event_t *event);
 void screen_print_text(lv_obj_t *screen);
 void timer_to_change_screen(lv_timer_t *timer);
 void first_screen_cfg(void);
