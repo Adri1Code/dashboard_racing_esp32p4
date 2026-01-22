@@ -14,8 +14,6 @@ void ui_slider(void)
         uint32_t saved_value = load_brightness_from_nvs();
         lv_slider_set_value(ui_sliderbrightness, saved_value, LV_ANIM_OFF);
         bsp_display_brightness_set(saved_value);
-    
-        ESP_LOGI(TAG, "Slider luminosité lié et synchronisé.");
     }
 }
 
