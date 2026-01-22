@@ -1,5 +1,5 @@
 # Name,   Type, SubType, Offset,  Size, Flags
-factory,app,factory,0x10000,0x1010000,
-nvs,data,nvs,0x1020000,0x82000,
-phy_init,data,phy,0x10A2000,0x205000,
-storage,data,spiffs,0x12A7000,0xD59000,
+factory,app,factory,0x10000,0x1760000,
+nvs,data,nvs,0x1770000,0x82000,
+phy_init,data,phy,0x17F2000,0x205000,
+storage,data,spiffs,0x19F7000,0x609000,
