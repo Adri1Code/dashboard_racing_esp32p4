@@ -4,8 +4,6 @@
 #include "bsp/esp-bsp.h"
 #include "nvs.h"
 
-static const char *TAG = "UI_MANAGER_SLIDER";
-
 void ui_slider(void)
 {
     if (ui_sliderbrightness != NULL)
