@@ -13,7 +13,7 @@ void ui_manager(void)
 
     ui_init();
 
-    ui_slider();
+    //ui_slider();
 
     ESP_LOGI(TAG, "Fin de l'initialisation de l'interface utilisateur...");
 }

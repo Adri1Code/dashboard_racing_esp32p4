@@ -4,6 +4,15 @@
 #ifndef _UI_THEME_MANAGER_H
 #define _UI_THEME_MANAGER_H
 
+#include <stdint.h>      // Pour int64_t, uint32_t, uint8_t
+#include <stdbool.h>     // Pour le type bool
+
+
+#ifndef LV_CONF_INCLUDE_SIMPLE
+    #define LV_CONF_INCLUDE_SIMPLE
+#endif
+#include "lvgl.h"        // Pour lv_obj_t, lv_style_prop_t, etc.
+
 #ifdef __cplusplus
 extern "C" {
 #endif

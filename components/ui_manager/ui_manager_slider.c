@@ -3,7 +3,7 @@
 #include "slider.h"
 #include "bsp/esp-bsp.h"
 #include "nvs.h"
-
+/*
 void ui_slider(void)
 {
     if (ui_sliderbrightness != NULL)
@@ -13,7 +13,7 @@ void ui_slider(void)
         lv_slider_set_value(ui_sliderbrightness, saved_value, LV_ANIM_OFF);
         bsp_display_brightness_set(saved_value);
     }
-}
+}*/
 
 
 
