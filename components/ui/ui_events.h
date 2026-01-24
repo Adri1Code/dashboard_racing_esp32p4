@@ -18,6 +18,20 @@ void apply_color_orange(lv_event_t * e);
 void apply_color_red(lv_event_t * e);
 void apply_color_cyan(lv_event_t * e);
 void apply_color_blue(lv_event_t * e);
+void update_console_display();
+void keyboard_add_digit(const char* digit);
+void keyboard_backspace(lv_event_t * e);
+void keyboard_dot(lv_event_t * e);
+void keyboard_0(lv_event_t * e);
+void keyboard_1(lv_event_t * e);
+void keyboard_2(lv_event_t * e);
+void keyboard_3(lv_event_t * e);
+void keyboard_4(lv_event_t * e);
+void keyboard_5(lv_event_t * e);
+void keyboard_6(lv_event_t * e);
+void keyboard_7(lv_event_t * e);
+void keyboard_8(lv_event_t * e);
+void keyboard_9(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/
