@@ -463,6 +463,7 @@ lv_obj_set_align( ui_consolelabel, LV_ALIGN_CENTER );
 lv_obj_set_style_text_color(ui_consolelabel, lv_color_hex(0x00FFF0), LV_PART_MAIN | LV_STATE_DEFAULT );
 lv_obj_set_style_text_opa(ui_consolelabel, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 lv_obj_set_style_text_font(ui_consolelabel, &lv_font_montserrat_22, LV_PART_MAIN| LV_STATE_DEFAULT);
+lv_obj_set_style_text_letter_space(ui_consolelabel, 3, 0);
 update_console_display();
 
 ui_key1 = lv_obj_create(ui_screenconfig);
