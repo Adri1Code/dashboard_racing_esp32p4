@@ -142,7 +142,11 @@ lv_obj_set_y( ui_blackledpanel1, -147 );
 lv_obj_set_align( ui_blackledpanel1, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_blackledpanel1, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_img_src( ui_blackledpanel1, &ui_img_bouton_noir_png, LV_PART_MAIN | LV_STATE_DEFAULT );
-lv_obj_set_style_opa(ui_blackledpanel1, 0, LV_PART_MAIN| LV_STATE_DEFAULT);
+lv_obj_set_style_bg_opa(ui_blackledpanel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+lv_obj_set_style_bg_img_opa(ui_blackledpanel1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+lv_obj_set_style_opa(ui_blackledpanel1, 255, LV_PART_MAIN | LV_STATE_DEFAULT); // Changé à 255
+lv_obj_set_style_border_width(ui_blackledpanel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+lv_obj_set_style_outline_width(ui_blackledpanel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 ui_blackledpanel2 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_blackledpanel2, 79);
