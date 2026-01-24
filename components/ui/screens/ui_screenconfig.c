@@ -26,7 +26,35 @@ lv_obj_t *uic_blackledpanel2;
 lv_obj_t *uic_blackledpanel1;
 lv_obj_t *uic_bgscreenconfig;
 lv_obj_t *uic_screenconfig;
-lv_obj_t *ui_screenconfig = NULL;lv_obj_t *ui_bgscreenconfig = NULL;lv_obj_t *ui_blackledpanel1 = NULL;lv_obj_t *ui_blackledpanel2 = NULL;lv_obj_t *ui_blackledpanel3 = NULL;lv_obj_t *ui_blackledpanel4 = NULL;lv_obj_t *ui_blackledpanel5 = NULL;lv_obj_t *ui_blackledpanel6 = NULL;lv_obj_t *ui_blackledpanel7 = NULL;lv_obj_t *ui_blackledpanel8 = NULL;lv_obj_t *ui_greenledpanel = NULL;lv_obj_t *ui_orangeledpanel = NULL;lv_obj_t *ui_redledpanel = NULL;lv_obj_t *ui_cyanledpanel = NULL;lv_obj_t *ui_blueledpanel = NULL;lv_obj_t *ui_consolelabel = NULL;lv_obj_t *ui_key1 = NULL;lv_obj_t *ui_key2 = NULL;lv_obj_t *ui_key3 = NULL;lv_obj_t *ui_key4 = NULL;lv_obj_t *ui_key5 = NULL;lv_obj_t *ui_key6 = NULL;lv_obj_t *ui_key7 = NULL;lv_obj_t *ui_key8 = NULL;lv_obj_t *ui_key9 = NULL;lv_obj_t *ui_keybackspace = NULL;lv_obj_t *ui_key0 = NULL;lv_obj_t *ui_keydot = NULL;
+lv_obj_t *ui_screenconfig = NULL;
+lv_obj_t *ui_bgscreenconfig = NULL;
+lv_obj_t *ui_blackledpanel1 = NULL;
+lv_obj_t *ui_blackledpanel2 = NULL;
+lv_obj_t *ui_blackledpanel3 = NULL;
+lv_obj_t *ui_blackledpanel4 = NULL;
+lv_obj_t *ui_blackledpanel5 = NULL;
+lv_obj_t *ui_blackledpanel6 = NULL;
+lv_obj_t *ui_blackledpanel7 = NULL;
+lv_obj_t *ui_blackledpanel8 = NULL;
+lv_obj_t *ui_greenledpanel = NULL;
+lv_obj_t *ui_orangeledpanel = NULL;
+lv_obj_t *ui_redledpanel = NULL;
+lv_obj_t *ui_cyanledpanel = NULL;
+lv_obj_t *ui_blueledpanel = NULL;
+lv_obj_t *ui_consolelabel = NULL;
+lv_obj_t *ui_key1 = NULL;
+lv_obj_t *ui_key2 = NULL;
+lv_obj_t *ui_key3 = NULL;
+lv_obj_t *ui_key4 = NULL;
+lv_obj_t *ui_key5 = NULL;
+lv_obj_t *ui_key6 = NULL;
+lv_obj_t *ui_key7 = NULL;
+lv_obj_t *ui_key8 = NULL;
+lv_obj_t *ui_key9 = NULL;
+lv_obj_t *ui_keybackspace = NULL;
+lv_obj_t *ui_key0 = NULL;
+lv_obj_t *ui_keydot = NULL;
+
 // event funtions
 void ui_event_blackledpanel1( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);
