@@ -474,7 +474,7 @@ lv_obj_set_align( ui_key1, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key1, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key1);
+add_key_highlighting(ui_key1);
 
 ui_key2 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key2, 69);
@@ -485,7 +485,7 @@ lv_obj_set_align( ui_key2, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key2, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key2);
+add_key_highlighting(ui_key2);
 
 ui_key3 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key3, 69);
@@ -496,7 +496,7 @@ lv_obj_set_align( ui_key3, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key3, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key3, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key3, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key3);
+add_key_highlighting(ui_key3);
 
 ui_key4 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key4, 69);
@@ -507,7 +507,7 @@ lv_obj_set_align( ui_key4, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key4, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key4, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key4, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key4);
+add_key_highlighting(ui_key4);
 
 ui_key5 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key5, 69);
@@ -518,7 +518,7 @@ lv_obj_set_align( ui_key5, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key5, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key5, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key5, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key5);
+add_key_highlighting(ui_key5);
 
 ui_key6 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key6, 69);
@@ -529,7 +529,7 @@ lv_obj_set_align( ui_key6, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key6, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key6, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key6, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key6);
+add_key_highlighting(ui_key6);
 
 ui_key7 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key7, 69);
@@ -540,7 +540,7 @@ lv_obj_set_align( ui_key7, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key7, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key7);
+add_key_highlighting(ui_key7);
 
 ui_key8 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key8, 69);
@@ -551,7 +551,7 @@ lv_obj_set_align( ui_key8, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key8, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key8);
+add_key_highlighting(ui_key8);
 
 ui_key9 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key9, 69);
@@ -562,7 +562,7 @@ lv_obj_set_align( ui_key9, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key9, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key9);
+add_key_highlighting(ui_key9);
 
 ui_keybackspace = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_keybackspace, 69);
@@ -573,7 +573,7 @@ lv_obj_set_align( ui_keybackspace, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_keybackspace, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_keybackspace, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_keybackspace, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_keybackspace);
+add_key_highlighting(ui_keybackspace);
 
 ui_key0 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key0, 69);
@@ -584,7 +584,7 @@ lv_obj_set_align( ui_key0, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key0, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_key0, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_key0, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_key0);
+add_key_highlighting(ui_key0);
 
 ui_keydot = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_keydot, 69);
@@ -595,7 +595,7 @@ lv_obj_set_align( ui_keydot, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_keydot, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_opa(ui_keydot, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 lv_obj_set_style_border_width(ui_keydot, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-add_keyboard_effect(ui_keydot);
+add_key_highlighting(ui_keydot);
 
 lv_obj_add_event_cb(ui_blackledpanel1, ui_event_blackledpanel1, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_blackledpanel2, ui_event_blackledpanel2, LV_EVENT_ALL, NULL);
