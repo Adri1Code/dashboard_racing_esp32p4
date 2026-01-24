@@ -11,6 +11,7 @@ extern "C" {
 #endif
 
 void set_target_led(lv_event_t * e);
+void reset_led_to_black(lv_event_t * e);
 void set_target_colour(lv_event_t * e);
 void apply_color_green(lv_event_t * e);
 void apply_color_orange(lv_event_t * e);
