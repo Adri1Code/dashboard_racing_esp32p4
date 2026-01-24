@@ -32,6 +32,7 @@ void keyboard_6(lv_event_t * e);
 void keyboard_7(lv_event_t * e);
 void keyboard_8(lv_event_t * e);
 void keyboard_9(lv_event_t * e);
+void add_keyboard_effect(lv_obj_t * obj);
 
 #ifdef __cplusplus
 } /*extern "C"*/

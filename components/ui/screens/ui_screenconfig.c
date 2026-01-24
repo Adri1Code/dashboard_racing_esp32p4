@@ -472,7 +472,10 @@ lv_obj_set_x( ui_key1, 172 );
 lv_obj_set_y( ui_key1, 51 );
 lv_obj_set_align( ui_key1, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_key1, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
-lv_obj_set_style_opa(ui_key1, 0, LV_PART_MAIN| LV_STATE_DEFAULT);
+//lv_obj_set_style_opa(ui_key1, 0, LV_PART_MAIN| LV_STATE_DEFAULT); // SUPPRIMER POUR VOIR LA SURBRILLANCE
+lv_obj_set_style_bg_opa(ui_key1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+lv_obj_set_style_border_width(ui_key1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+add_keyboard_effect(ui_key1);
 
 ui_key2 = lv_obj_create(ui_screenconfig);
 lv_obj_set_width( ui_key2, 69);
