@@ -31,6 +31,9 @@ void keyboard_backspace(lv_event_t * e);
 void keyboard_0(lv_event_t * e);
 void keyboard_dot(lv_event_t * e);
 
+void update_console_display(void);
+void add_key_highlighting(lv_obj_t * obj);
+
 #ifdef __cplusplus
 } /*extern "C"*/
 #endif
