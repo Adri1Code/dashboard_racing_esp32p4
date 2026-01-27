@@ -10,7 +10,6 @@
 #include "slider.h"
 #include "screen.h"
 #include "memory.h"
-#include "ui.h"
 #include "ui_manager.h"
 
 #define LOG_BREAK printf("\n")
@@ -42,7 +41,7 @@ void app_main(void)
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
-    ui_manager();
+    ui_manager_init();
 
     bsp_display_unlock();                                // deverouillage de LVGL
 
