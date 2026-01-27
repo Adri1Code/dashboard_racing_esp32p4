@@ -34,6 +34,7 @@ extern lv_obj_t *ui_Horloge2;
 extern lv_obj_t *ui_LabelHeure2;
 extern lv_obj_t *ui_LabelSepHeureMin2;
 extern lv_obj_t *ui_LabelMin2;
+
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_LabelShift1;
 extern lv_obj_t *uic_LabelShift2;

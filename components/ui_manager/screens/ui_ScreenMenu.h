@@ -32,6 +32,7 @@ extern void ui_event_MenuRealTime8( lv_event_t * e);
 extern lv_obj_t *ui_MenuRealTime8;
 extern void ui_event_MenuDisplay9( lv_event_t * e);
 extern lv_obj_t *ui_MenuDisplay9;
+
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_MenuDisplay1;
 extern lv_obj_t *uic_MenuConfig2;

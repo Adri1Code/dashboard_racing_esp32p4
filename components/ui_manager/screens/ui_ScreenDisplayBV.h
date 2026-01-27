@@ -46,6 +46,7 @@ extern lv_obj_t *ui_ALERTETEAU1;
 extern lv_obj_t *ui_LabelAlerteEau1;
 extern lv_obj_t *ui_ALERTEPOIL1;
 extern lv_obj_t *ui_LabelAlerteOil1;
+
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_PanelGauche1;
 extern lv_obj_t *uic_Panel3;

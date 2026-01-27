@@ -52,37 +52,37 @@ typedef struct {
 extern lv_obj_t *ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE( ui_img_1764218101);   // assets/RT_Dash_70_Logo_Loading-01.png
-LV_IMG_DECLARE( ui_img_521401086);   // assets/RT_Dash_70_Menu_waveshare_esp32-p4-01.png
-LV_IMG_DECLARE( ui_img_display_png);   // assets/display.png
-LV_IMG_DECLARE( ui_img_config_png);   // assets/config.png
-LV_IMG_DECLARE( ui_img_leds_png);   // assets/leds.png
-LV_IMG_DECLARE( ui_img_realtime_png);   // assets/RealTime.png
-LV_IMG_DECLARE( ui_img_gddash_70_fond_png);   // assets/GDDash_70_Fond.png
-LV_IMG_DECLARE( ui_img_gauchefond_9000_png);   // assets/GaucheFond_9000.png
-LV_IMG_DECLARE( ui_img_gauchecurseur_9000_png);   // assets/GaucheCurseur_9000.png
-LV_IMG_DECLARE( ui_img_droitefond_9000_png);   // assets/DroiteFond_9000.png
-LV_IMG_DECLARE( ui_img_droitecurseur_9000_png);   // assets/DroiteCurseur_9000.png
-LV_IMG_DECLARE( ui_img_btn_menu_png);   // assets/Btn_Menu.png
-LV_IMG_DECLARE( ui_img_1968289144);   // assets/RT_Dash_70_Config_LEDs_waveshare_esp32-p4-01.png
-LV_IMG_DECLARE( ui_img_297271254);   // assets/RT_Dash_70_Config_ECU_Display_waveshare_esp32-p4-01.png
-LV_IMG_DECLARE( ui_img_1361701724);   // assets/CadreRapportBV-05.png
-LV_IMG_DECLARE( ui_img_1642545580);   // assets/RT_Dash_70_RealTime_waveshare_esp32-p4-01.png
+LV_IMG_DECLARE( ui_img_1764218101 );   // assets/RT_Dash_70_Logo_Loading-01.png
+LV_IMG_DECLARE( ui_img_521401086 );   // assets/RT_Dash_70_Menu_waveshare_esp32-p4-01.png
+LV_IMG_DECLARE( ui_img_display_png );   // assets/display.png
+LV_IMG_DECLARE( ui_img_config_png );   // assets/config.png
+LV_IMG_DECLARE( ui_img_leds_png );   // assets/leds.png
+LV_IMG_DECLARE( ui_img_realtime_png );   // assets/RealTime.png
+LV_IMG_DECLARE( ui_img_gddash_70_fond_png );   // assets/GDDash_70_Fond.png
+LV_IMG_DECLARE( ui_img_gauchefond_9000_png );   // assets/GaucheFond_9000.png
+LV_IMG_DECLARE( ui_img_gauchecurseur_9000_png );   // assets/GaucheCurseur_9000.png
+LV_IMG_DECLARE( ui_img_droitefond_9000_png );   // assets/DroiteFond_9000.png
+LV_IMG_DECLARE( ui_img_droitecurseur_9000_png );   // assets/DroiteCurseur_9000.png
+LV_IMG_DECLARE( ui_img_btn_menu_png );   // assets/Btn_Menu.png
+LV_IMG_DECLARE( ui_img_1968289144 );   // assets/RT_Dash_70_Config_LEDs_waveshare_esp32-p4-01.png
+LV_IMG_DECLARE( ui_img_297271254 );   // assets/RT_Dash_70_Config_ECU_Display_waveshare_esp32-p4-01.png
+LV_IMG_DECLARE( ui_img_1361701724 );   // assets/CadreRapportBV-05.png
+LV_IMG_DECLARE( ui_img_1642545580 );   // assets/RT_Dash_70_RealTime_waveshare_esp32-p4-01.png
 
 // FONTS
-LV_FONT_DECLARE( ui_font_RapBV);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic30);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic35);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic40);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic45);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic50);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic55);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic60);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic65);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic75);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic80);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic85);
-LV_FONT_DECLARE( ui_font_VerdanaBoldItalic90);
+LV_FONT_DECLARE( ui_font_RapBV );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic30 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic35 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic40 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic45 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic50 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic55 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic60 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic65 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic75 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic80 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic85 );
+LV_FONT_DECLARE( ui_font_VerdanaBoldItalic90 );
 
 // UI INIT
 void ui_manager_init(void);

@@ -63,6 +63,7 @@ extern lv_obj_t *ui_LabelZoneRouge;
 extern void ui_event_SliderRPMZoneRouge( lv_event_t * e);
 extern lv_obj_t *ui_SliderRPMZoneRouge;
 extern lv_obj_t *ui_LabelSliderRPMZoneRouge;
+
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_ButtonHome1;
 extern lv_obj_t *uic_ContainerECU;

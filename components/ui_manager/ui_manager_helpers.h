@@ -66,8 +66,7 @@ void _ui_state_modify( lv_obj_t *target, int32_t state, int value);
 #define UI_MOVE_CURSOR_RIGHT 1
 #define UI_MOVE_CURSOR_DOWN 2
 #define UI_MOVE_CURSOR_LEFT 3
-void _ui_textarea_move_cursor(lv_obj_t * target, int val)
-;
+void _ui_textarea_move_cursor(lv_obj_t * target, int val);
 
 void scr_unloaded_delete_cb(lv_event_t * e);
 
@@ -80,6 +79,7 @@ typedef struct _ui_anim_user_data_t {
     int32_t imgset_size;
     int32_t val;
 } ui_anim_user_data_t;
+
 void _ui_anim_callback_free_user_data(lv_anim_t *a);
 
 void _ui_anim_callback_set_x(lv_anim_t* a, int32_t v);
@@ -120,11 +120,9 @@ void _ui_slider_set_text_value( lv_obj_t *trg, lv_obj_t *src, const char *prefix
 
 void _ui_checked_set_text_value( lv_obj_t *trg, lv_obj_t *src, const char *txt_on, const char *txt_off);
 
-void _ui_spinbox_step(lv_obj_t * target, int val)
-;
+void _ui_spinbox_step(lv_obj_t * target, int val);
 
-void _ui_switch_theme(int val)
-;
+void _ui_switch_theme(int val);
 
 #ifdef __cplusplus
 } /*extern "C"*/

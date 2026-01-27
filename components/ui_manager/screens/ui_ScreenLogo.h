@@ -15,6 +15,7 @@ extern void ui_ScreenLogo_screen_init(void);
 extern void ui_ScreenLogo_screen_destroy(void);
 extern void ui_event_ScreenLogo( lv_event_t * e);
 extern lv_obj_t *ui_ScreenLogo;
+
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

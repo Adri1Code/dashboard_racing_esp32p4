@@ -28,28 +28,30 @@ lv_obj_t *ui____initial_actions0;
 ///////////////////// SCREENS ////////////////////
 
 void ui_manager_init( void )
-{LV_EVENT_GET_COMP_CHILD = lv_event_register_id();
+{
+    LV_EVENT_GET_COMP_CHILD = lv_event_register_id();
 
-lv_disp_t *dispp = lv_disp_get_default();
-lv_theme_t *theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED), true, LV_FONT_DEFAULT);
-lv_disp_set_theme(dispp, theme);
-ui_ScreenLogo_screen_init();
-ui_ScreenMenu_screen_init();
-ui_ScreenDisplayRX_screen_init();
-ui_ScreenLeds_screen_init();
-ui_ScreenDisplayECU_screen_init();
-ui_ScreenDisplayBV_screen_init();
-ui_ScreenRealTime_screen_init();
-ui____initial_actions0 = lv_obj_create(NULL);
-lv_disp_load_scr( ui_ScreenLogo);
+    lv_disp_t *dispp = lv_disp_get_default();
+    lv_theme_t *theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED), true,   LV_FONT_DEFAULT);
+    lv_disp_set_theme(dispp, theme);
+    ui_ScreenLogo_screen_init();
+    ui_ScreenMenu_screen_init();
+    ui_ScreenDisplayRX_screen_init();
+    ui_ScreenLeds_screen_init();
+    ui_ScreenDisplayECU_screen_init();
+    ui_ScreenDisplayBV_screen_init();
+    ui_ScreenRealTime_screen_init();
+    ui____initial_actions0 = lv_obj_create(NULL);
+    lv_disp_load_scr( ui_ScreenLogo);
 }
 
 void ui_manager_destroy( void )
-{ui_ScreenLogo_screen_destroy();
-ui_ScreenMenu_screen_destroy();
-ui_ScreenDisplayRX_screen_destroy();
-ui_ScreenLeds_screen_destroy();
-ui_ScreenDisplayECU_screen_destroy();
-ui_ScreenDisplayBV_screen_destroy();
-ui_ScreenRealTime_screen_destroy();
+{
+    ui_ScreenLogo_screen_destroy();
+    ui_ScreenMenu_screen_destroy();
+    ui_ScreenDisplayRX_screen_destroy();
+    ui_ScreenLeds_screen_destroy();
+    ui_ScreenDisplayECU_screen_destroy();
+    ui_ScreenDisplayBV_screen_destroy();
+    ui_ScreenRealTime_screen_destroy();
 }

@@ -10,7 +10,7 @@
 #endif
 
 // --- DÉCLARATIONS EXTERNES ---
-// Ces variables doivent être définies dans ui.c
+// Ces variables doivent être définies dans ui_manager.c
 extern uint8_t ui_theme_idx;
 extern _ui_local_style_t* _ui_local_styles;
 extern uint32_t _ui_local_style_count;
@@ -21,35 +21,57 @@ ui_style_variable_t ui_get_theme_value(const ui_theme_variable_t* var) {
     return var[ui_theme_idx];
 }
 
-lv_style_value_t _ui_style_value_convert(lv_style_prop_t property, ui_style_variable_t value) {
+lv_style_value_t _ui_style_value_convert(lv_style_prop_t property, ui_style_variable_t value) 
+{
     static lv_style_value_t Style_Value;
-    if (property == LV_STYLE_BG_COLOR || property == LV_STYLE_BG_GRAD_COLOR || property == LV_STYLE_BG_IMG_RECOLOR || property == LV_STYLE_BORDER_COLOR
-        || property == LV_STYLE_OUTLINE_COLOR || property == LV_STYLE_SHADOW_COLOR || property == LV_STYLE_IMG_RECOLOR || property == LV_STYLE_LINE_COLOR
-        || property == LV_STYLE_ARC_COLOR || property == LV_STYLE_TEXT_COLOR) {
+    if (property == LV_STYLE_BG_COLOR || 
+        property == LV_STYLE_BG_GRAD_COLOR || 
+        property == LV_STYLE_BG_IMG_RECOLOR || 
+        property == LV_STYLE_BORDER_COLOR || 
+        property == LV_STYLE_OUTLINE_COLOR || 
+        property == LV_STYLE_SHADOW_COLOR || 
+        property == LV_STYLE_IMG_RECOLOR || 
+        property == LV_STYLE_LINE_COLOR || 
+        property == LV_STYLE_ARC_COLOR || 
+        property == LV_STYLE_TEXT_COLOR) 
+    {
         Style_Value.color = lv_color_hex(value);
     }
-    else if (property == LV_STYLE_BG_GRAD || property == LV_STYLE_BG_IMG_SRC || property == LV_STYLE_ARC_IMG_SRC || property == LV_STYLE_TEXT_FONT
-             || property == LV_STYLE_COLOR_FILTER_DSC || property == LV_STYLE_ANIM || property == LV_STYLE_TRANSITION) {
+    else if (property == LV_STYLE_BG_GRAD || 
+            property == LV_STYLE_BG_IMG_SRC || 
+            property == LV_STYLE_ARC_IMG_SRC ||
+            property == LV_STYLE_TEXT_FONT || 
+            property == LV_STYLE_COLOR_FILTER_DSC || 
+            property == LV_STYLE_ANIM || 
+            property == LV_STYLE_TRANSITION) 
+    {
         Style_Value.ptr = (void*)(uintptr_t)value;
     }
     else Style_Value.num = value;
+    
     return Style_Value;
 }
 
-inline void ui_object_set_local_style_property
-(lv_obj_t* object_p, lv_style_selector_t selector, lv_style_prop_t property, ui_style_variable_t value) {
-    if (object_p != NULL) {
+inline void ui_object_set_local_style_property (lv_obj_t* object_p, 
+        lv_style_selector_t selector, 
+        lv_style_prop_t property, 
+        ui_style_variable_t value) 
+{
+    if (object_p != NULL) 
+    {
         lv_obj_set_local_style_prop(object_p, property, _ui_style_value_convert(property, value), selector);
     }
 }
 
 // --- GESTION DES STYLES LOCAUX ---
 
-_ui_local_style_t* _ui_local_style_create(const ui_style_variable_t* style_variable_p, bool is_themeable) {
+_ui_local_style_t* _ui_local_style_create(const ui_style_variable_t* style_variable_p, bool is_themeable) 
+{
     static uint32_t i;
     static _ui_local_style_t* local_style_p;
 
-    for (i = 0; i < _ui_local_style_count; ++i) {
+    for (i = 0; i < _ui_local_style_count; ++i) 
+    {
         if (_ui_local_styles[i].style_variable_p == style_variable_p) return &_ui_local_styles[i];
     }
 
@@ -69,26 +91,34 @@ _ui_local_style_t* _ui_local_style_create(const ui_style_variable_t* style_varia
     return local_style_p;
 }
 
-void _ui_local_style_property_setting_delete(lv_event_t* event) {
+void _ui_local_style_property_setting_delete(lv_event_t* event) 
+{
     lv_obj_t** ptr = (lv_obj_t**)lv_event_get_user_data(event);
     if (ptr) *ptr = NULL;
 }
 
-_ui_local_style_property_setting_t* _ui_local_style_property_setting_create
-(_ui_local_style_t* local_style_p, lv_obj_t* object_p, lv_style_selector_t selector, lv_style_prop_t property) {
+_ui_local_style_property_setting_t* _ui_local_style_property_setting_create(_ui_local_style_t* local_style_p, 
+        lv_obj_t* object_p, 
+        lv_style_selector_t selector, 
+        lv_style_prop_t property) 
+{
     static uint32_t i;
     static _ui_local_style_property_setting_t *style_property_setting_p, *empty_style_property_setting_p;
 
     style_property_setting_p = (_ui_local_style_property_setting_t*)local_style_p->style_property_settings;
     empty_style_property_setting_p = NULL;
 
-    if (style_property_setting_p != NULL) {
-        for (i = 0; i < local_style_p->style_property_setting_count; ++i) {
-            if (empty_style_property_setting_p == NULL && style_property_setting_p->object_p == NULL) {
+    if (style_property_setting_p != NULL) 
+    {
+        for (i = 0; i < local_style_p->style_property_setting_count; ++i) 
+        {
+            if (empty_style_property_setting_p == NULL && style_property_setting_p->object_p == NULL) 
+            {
                 empty_style_property_setting_p = style_property_setting_p;
             }
             if (style_property_setting_p->object_p == object_p && style_property_setting_p->selector == selector
-                && style_property_setting_p->property == property) {
+                && style_property_setting_p->property == property) 
+            {
                 return style_property_setting_p;
             }
             if (style_property_setting_p->next_p != NULL) 
@@ -97,7 +127,8 @@ _ui_local_style_property_setting_t* _ui_local_style_property_setting_create
         }
     }
 
-    if (empty_style_property_setting_p == NULL) {
+    if (empty_style_property_setting_p == NULL) 
+    {
         empty_style_property_setting_p = (_ui_local_style_property_setting_t*)lv_mem_alloc(sizeof(_ui_local_style_property_setting_t));
         LV_ASSERT_MALLOC(empty_style_property_setting_p);
         if (empty_style_property_setting_p == NULL) return NULL;
@@ -113,13 +144,17 @@ _ui_local_style_property_setting_t* _ui_local_style_property_setting_create
     lv_obj_add_event_cb(object_p, _ui_local_style_property_setting_delete, LV_EVENT_DELETE, &style_property_setting_p->object_p);
     style_property_setting_p->selector = selector;
     style_property_setting_p->property = property;
+
     return style_property_setting_p;
 }
 
 // --- FONCTIONS PUBLIQUES ---
 
-void ui_object_set_themeable_style_property
-(lv_obj_t* object_p, lv_style_selector_t selector, lv_style_prop_t property, const ui_theme_variable_t* theme_variable_p) {
+void ui_object_set_themeable_style_property(lv_obj_t* object_p, 
+    lv_style_selector_t selector, 
+    lv_style_prop_t property, 
+    const ui_theme_variable_t* theme_variable_p) 
+{
     _ui_local_style_t* local_style_p;
     _ui_local_style_property_setting_t* property_setting_p;
 
@@ -132,7 +167,8 @@ void ui_object_set_themeable_style_property
     lv_obj_set_local_style_prop(object_p, property, _ui_style_value_convert(property, ui_get_theme_value(theme_variable_p)), selector);
 }
 
-void _ui_theme_set_variable_styles(uint8_t mode) {
+void _ui_theme_set_variable_styles(uint8_t mode) 
+{
     static uint8_t ui_theme_idx_previous = 255;
     uint32_t i, j;
     _ui_local_style_property_setting_t* property_setting_p;
@@ -142,22 +178,28 @@ void _ui_theme_set_variable_styles(uint8_t mode) {
     uint8_t ui_Theme_Changed = (ui_theme_idx != ui_theme_idx_previous);
     ui_theme_idx_previous = ui_theme_idx;
 
-    for (i = 0; i < _ui_local_style_count; ++i) {
+    for (i = 0; i < _ui_local_style_count; ++i) 
+    {
         style_variable_p = _ui_local_styles[i].style_variable_p;
         if (_ui_local_styles[i].is_themeable) style_value = ui_get_theme_value(style_variable_p);
         else style_value = *style_variable_p;
 
-        if (style_variable_p != _ui_local_styles[i].previous_pointer || style_value != _ui_local_styles[i].previous_value
-            || mode == UI_VARIABLE_STYLES_MODE_INIT || ui_Theme_Changed) {
-            
+        if (style_variable_p != _ui_local_styles[i].previous_pointer || 
+            style_value != _ui_local_styles[i].previous_value || 
+            mode == UI_VARIABLE_STYLES_MODE_INIT 
+            || ui_Theme_Changed) 
+        {    
             _ui_local_styles[i].previous_pointer = (void*)style_variable_p;
             _ui_local_styles[i].previous_value = style_value;
 
             property_setting_p = (_ui_local_style_property_setting_t*)_ui_local_styles[i].style_property_settings;
-            for (j = 0; j < _ui_local_styles[i].style_property_setting_count; ++j) {
-                if (property_setting_p && property_setting_p->object_p != NULL) {
+            for (j = 0; j < _ui_local_styles[i].style_property_setting_count; ++j) 
+            {
+                if (property_setting_p && property_setting_p->object_p != NULL) 
+                {
                     ui_object_set_local_style_property(property_setting_p->object_p, property_setting_p->selector, property_setting_p->property, style_value);
                 }
+                
                 if (property_setting_p && property_setting_p->next_p != NULL) 
                     property_setting_p = (_ui_local_style_property_setting_t*)property_setting_p->next_p;
                 else break;

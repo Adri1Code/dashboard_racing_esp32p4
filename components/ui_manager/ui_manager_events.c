@@ -14,7 +14,8 @@ static char console_text[32] = "";      // Buffer pour le texte affiché
 lv_obj_t *ui_console_label = NULL;      // Label pour afficher le texte
 
 // Fonction pour mémoriser quelle LED noire a été cliquée
-void set_target_led(lv_event_t * e) {
+void set_target_led(lv_event_t * e) 
+{
     //current_selected_led = lv_event_get_target(e);
     
     // Optionnel : un petit effet visuel pour confirmer la sélection
@@ -36,7 +37,8 @@ void set_target_led(lv_event_t * e) {
 }
 
 // Fonction générique (interne) pour appliquer une couleur
-void _apply_color(const lv_img_dsc_t * img_src) {
+void _apply_color(const lv_img_dsc_t * img_src) 
+{
     if (current_selected_led != NULL) {
         // On remet l'opacité à fond
         lv_obj_set_style_opa(current_selected_led, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -57,7 +59,6 @@ void apply_color_blue(lv_event_t * e)   { _apply_color(&ui_img_bouton_bleu_png);
 
 // Correction pour les panels 7 et 8 (vous aviez mis set_target_colour au lieu de led)
 void set_target_colour(lv_event_t * e) { set_target_led(e); }
-
 
 void reset_led_to_black(lv_event_t * e)
 {
@@ -91,7 +92,8 @@ void update_console_display()
     }
 }
 
-void keyboard_add_digit(const char* digit){
+void keyboard_add_digit(const char* digit)
+{
     size_t len = strlen(console_text);
     if (len < 4)        // limite de 4 caracteres
     {
@@ -100,7 +102,8 @@ void keyboard_add_digit(const char* digit){
     }
 }
 
-void keyboard_backspace(lv_event_t * e) {
+void keyboard_backspace(lv_event_t * e) 
+{
     size_t len = strlen(console_text);
     if (len > 0) {
         console_text[len - 1] = '\0';
@@ -128,7 +131,8 @@ void keyboard_8(lv_event_t * e){ keyboard_add_digit("8"); }
 void keyboard_9(lv_event_t * e){ keyboard_add_digit("9"); }
 
 
-void add_key_highlighting(lv_obj_t * obj) {
+void add_key_highlighting(lv_obj_t * obj) 
+{
     // Supprime le carré blanc par défaut dont on a parlé
     lv_obj_set_style_outline_width(obj, 0, LV_PART_MAIN | LV_STATE_ANY);
     lv_obj_set_style_border_width(obj, 0, LV_PART_MAIN | LV_STATE_ANY);
