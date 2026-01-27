@@ -36,3 +36,6 @@ dependencies.lock
 components/ui/ui_events.c
 components/ui/project.info
 components/ui/filelist.txt
+
+components/ui_manager/project.info
+components/ui_manager/filelist.txt
