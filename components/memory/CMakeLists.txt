@@ -1,3 +1,15 @@
-idf_component_register(SRCS "nvs.c" "memory.c"
-                    INCLUDE_DIRS "include"
-                    REQUIRES fatfs waveshare__esp32_p4_wifi6_touch_lcd_7b spi_flash nvs_flash app_update spiffs bootloader_support)
+idf_component_register(
+    SRCS 
+        "nvs.c" 
+        "memory.c"
+    INCLUDE_DIRS 
+        "include"
+    REQUIRES 
+        fatfs 
+        waveshare__esp32_p4_wifi6_touch_lcd_7b 
+        spi_flash 
+        nvs_flash 
+        app_update 
+        spiffs 
+        bootloader_support
+)

@@ -6,7 +6,6 @@ file(GLOB_RECURSE SOURCES
     "screens/*.c"
 )
 
-# Enregistrement du composant pour ESP-IDF
 idf_component_register(
     SRCS ${SOURCES}
     INCLUDE_DIRS "." 
