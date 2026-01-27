@@ -1,13 +1,12 @@
 file(GLOB_RECURSE SOURCES 
-    "ui.c"
-    "ui_helpers.c"
-    "ui_events.c"
+    "*.c"
     "components/*.c"
     "fonts/*.c"
     "images/*.c"
     "screens/*.c"
 )
 
+# Enregistrement du composant pour ESP-IDF
 idf_component_register(
     SRCS ${SOURCES}
     INCLUDE_DIRS "." 
