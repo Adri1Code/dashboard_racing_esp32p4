@@ -5,6 +5,13 @@
 
 #include "../ui_manager.h"
 
+extern const lv_img_dsc_t ui_img_bouton_vert_png;
+extern const lv_img_dsc_t ui_img_bouton_orange_png;
+extern const lv_img_dsc_t ui_img_bouton_rouge_png;
+extern const lv_img_dsc_t ui_img_bouton_cyan_png;
+extern const lv_img_dsc_t ui_img_bouton_bleu_png;
+extern const lv_img_dsc_t ui_img_bouton_noir_png;
+
 lv_obj_t *uic_LabelMin2;
 lv_obj_t *uic_LabelSepHeureMin2;
 lv_obj_t *uic_LabelHeure2;
@@ -23,7 +30,13 @@ lv_obj_t *uic_LabelShift4;
 lv_obj_t *uic_LabelShift3;
 lv_obj_t *uic_LabelShift2;
 lv_obj_t *uic_LabelShift1;
+
+lv_obj_t *uic_PanelShift1;
+lv_obj_t *uic_greenledpanel = NULL;
 lv_obj_t *ui_ScreenLeds = NULL;
+lv_obj_t *ui_PanelShift1 = NULL;
+lv_obj_t *ui_greenledpanel = NULL;
+
 lv_obj_t *ui_LabelShift1 = NULL;
 lv_obj_t *ui_LabelShift2 = NULL;
 lv_obj_t *ui_LabelShift3 = NULL;
@@ -54,6 +67,31 @@ void ui_event_ScreenLeds( lv_event_t * e) {
     }
 }
 
+// event funtions
+void ui_event_PanelShift1( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if ( event_code == LV_EVENT_CLICKED) 
+    {
+        set_target_led( e );
+    }
+
+    if ( event_code == LV_EVENT_CLICKED) 
+    {
+        reset_led_to_black( e );
+    }
+}
+
+void ui_event_greenledpanel( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if ( event_code == LV_EVENT_CLICKED) 
+    {
+        apply_color_green( e );
+    }
+}
+
+
 void ui_event_ButtonHome2( lv_event_t * e) 
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -70,6 +108,41 @@ void ui_ScreenLeds_screen_init(void)
     ui_ScreenLeds = lv_obj_create(NULL);
     lv_obj_clear_flag( ui_ScreenLeds, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
     lv_obj_set_style_bg_img_src( ui_ScreenLeds, &ui_img_1968289144, LV_PART_MAIN | LV_STATE_DEFAULT );
+
+
+    ui_PanelShift1 = lv_obj_create(ui_ScreenLeds);
+    lv_obj_set_width(ui_PanelShift1, 76);
+    lv_obj_set_height(ui_PanelShift1, 76);
+    lv_obj_set_x(ui_PanelShift1, -446);
+    lv_obj_set_y(ui_PanelShift1, -147);
+    lv_obj_set_align(ui_PanelShift1, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_PanelShift1, LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_img_src( ui_PanelShift1, &ui_img_bouton_noir_png, LV_PART_MAIN | LV_STATE_DEFAULT );
+    lv_obj_set_style_radius(ui_PanelShift1, 50, LV_PART_MAIN | LV_STATE_DEFAULT); 
+    lv_obj_set_style_border_width(ui_PanelShift1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PanelShift1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_color(ui_PanelShift1, lv_color_hex(0x00FFC7), LV_PART_MAIN | LV_STATE_CHECKED);
+    lv_obj_set_style_shadow_width(ui_PanelShift1, 25, LV_PART_MAIN | LV_STATE_CHECKED);
+    lv_obj_set_style_shadow_spread(ui_PanelShift1, 10, LV_PART_MAIN | LV_STATE_CHECKED);  
+    lv_obj_set_style_shadow_opa(ui_PanelShift1, 255, LV_PART_MAIN | LV_STATE_CHECKED);
+
+
+    ui_greenledpanel = lv_obj_create(ui_ScreenLeds);
+    lv_obj_set_width( ui_greenledpanel, 58);
+    lv_obj_set_height( ui_greenledpanel, 58);
+    lv_obj_set_x( ui_greenledpanel, 427 );
+    lv_obj_set_y( ui_greenledpanel, 2 );
+    lv_obj_set_align( ui_greenledpanel, LV_ALIGN_CENTER );
+    lv_obj_clear_flag( ui_greenledpanel, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+    lv_obj_set_style_radius(ui_greenledpanel, 2, LV_PART_MAIN| LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_img_src( ui_greenledpanel, &ui_img_bouton_vert_png, LV_PART_MAIN | LV_STATE_DEFAULT );
+    lv_obj_set_style_bg_img_opa(ui_greenledpanel, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+    lv_obj_set_style_opa(ui_greenledpanel, 0, LV_PART_MAIN| LV_STATE_DEFAULT);
+
+
+
+
+
 
     ui_LabelShift1 = lv_label_create(ui_ScreenLeds);
     lv_obj_set_width( ui_LabelShift1, LV_SIZE_CONTENT);  /// 1
@@ -252,8 +325,16 @@ void ui_ScreenLeds_screen_init(void)
     lv_label_set_text(ui_LabelMin2,"35");
     lv_obj_set_style_text_font(ui_LabelMin2, &lv_font_montserrat_44, LV_PART_MAIN| LV_STATE_DEFAULT);
 
+
+    lv_obj_add_event_cb(ui_PanelShift1, ui_event_PanelShift1, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ButtonHome2, ui_event_ButtonHome2, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ScreenLeds, ui_event_ScreenLeds, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_greenledpanel, ui_event_greenledpanel, LV_EVENT_ALL, NULL);
+
+
+    uic_PanelShift1 = ui_PanelShift1;
+    uic_greenledpanel = ui_greenledpanel;
+
     uic_LabelShift1 = ui_LabelShift1;
     uic_LabelShift2 = ui_LabelShift2;
     uic_LabelShift3 = ui_LabelShift3;
@@ -280,6 +361,14 @@ void ui_ScreenLeds_screen_destroy(void)
 
     // NULL screen variables
     ui_ScreenLeds= NULL;
+    
+    uic_PanelShift1 = NULL;
+    ui_PanelShift1 = NULL;
+
+    ui_greenledpanel = NULL;
+    uic_greenledpanel = NULL;
+
+
     uic_LabelShift1= NULL;
     ui_LabelShift1= NULL;
     uic_LabelShift2= NULL;

@@ -6,6 +6,19 @@
 #ifndef _RT_DASH_70_WAVESHARE_ESP32_P4_V1_UI_H
 #define _RT_DASH_70_WAVESHARE_ESP32_P4_V1_UI_H
 
+#include "lvgl.h"
+
+void set_target_led(lv_event_t * e);
+void reset_led_to_black(lv_event_t * e);
+void apply_color_green(lv_event_t * e);
+void apply_color_orange(lv_event_t * e);
+void apply_color_red(lv_event_t * e);
+void apply_color_cyan(lv_event_t * e);
+void apply_color_blue(lv_event_t * e);
+void set_target_colour(lv_event_t * e);
+
+// Fonctions clavier
+
 #ifdef __cplusplus
 extern "C" {
 #endif
