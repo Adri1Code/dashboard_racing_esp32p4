@@ -19,6 +19,23 @@ void set_target_colour(lv_event_t * e);
 
 // Fonctions clavier
 
+void keyboard_backspace(lv_event_t * e);
+void keyboard_dot(lv_event_t *e);
+void keyboard_0(lv_event_t * e);
+void keyboard_1(lv_event_t * e);
+void keyboard_2(lv_event_t * e);
+void keyboard_3(lv_event_t * e);
+void keyboard_4(lv_event_t * e);
+void keyboard_5(lv_event_t * e);
+void keyboard_6(lv_event_t * e);
+void keyboard_7(lv_event_t * e);
+void keyboard_8(lv_event_t * e);
+void keyboard_9(lv_event_t * e);
+void add_key_highlighting(lv_obj_t * obj);
+void update_console_display();
+void keyboard_add_digit(const char* digit);
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

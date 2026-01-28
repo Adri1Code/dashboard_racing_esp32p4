@@ -11,7 +11,8 @@ extern const lv_img_dsc_t ui_img_bouton_noir_png;
 lv_obj_t * current_selected_led = NULL;
 
 static char console_text[32] = "";      // Buffer pour le texte affiché 
-lv_obj_t *ui_console_label = NULL;      // Label pour afficher le texte
+//lv_obj_t *ui_console_label = NULL;      // Label pour afficher le texte
+extern lv_obj_t *ui_console_label;
 
 // Fonction pour mémoriser quelle LED noire a été cliquée
 void set_target_led(lv_event_t * e) 
