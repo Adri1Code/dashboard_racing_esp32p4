@@ -8,6 +8,22 @@
 
 #include "lvgl.h"
 
+typedef enum {
+    COLOR_NONE = 0,
+    COLOR_GREEN,
+    COLOR_ORANGE,
+    COLOR_RED,
+    COLOR_CYAN,
+    COLOR_BLUE
+} led_color_t;
+
+//static led_color_t get_color_code_from_img(const void * img_src);
+//static const void* get_img_from_color_code(uint32_t code);
+void save_global_config_to_nvs(void);
+void load_global_config_from_nvs(void);
+void check_and_auto_save(void);
+
+
 void set_target_led(lv_event_t * e);
 void reset_led_to_black(lv_event_t * e);
 void apply_color_green(lv_event_t * e);

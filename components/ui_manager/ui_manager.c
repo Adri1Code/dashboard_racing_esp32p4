@@ -29,6 +29,7 @@ lv_obj_t *ui____initial_actions0;
 
 void ui_manager_init( void )
 {
+
     LV_EVENT_GET_COMP_CHILD = lv_event_register_id();
 
     lv_disp_t *dispp = lv_disp_get_default();
@@ -41,6 +42,9 @@ void ui_manager_init( void )
     ui_ScreenDisplayECU_screen_init();
     ui_ScreenDisplayBV_screen_init();
     ui_ScreenRealTime_screen_init();
+    
+    load_global_config_from_nvs();
+
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr( ui_ScreenLogo);
 }

@@ -1,4 +1,6 @@
 #include "ui_manager.h"
+#include "nvs_flash.h"
+#include "ui_ScreenLeds.h"
 
 extern const lv_img_dsc_t ui_img_bouton_vert_png;
 extern const lv_img_dsc_t ui_img_bouton_orange_png;
@@ -7,12 +9,127 @@ extern const lv_img_dsc_t ui_img_bouton_cyan_png;
 extern const lv_img_dsc_t ui_img_bouton_bleu_png;
 extern const lv_img_dsc_t ui_img_bouton_noir_png;
 
+// Helper : Convertir une image en code couleur (pour la sauvegarde NVS)
+static led_color_t get_color_code_from_img(const void * img_src) {
+    if (img_src == &ui_img_bouton_vert_png) return COLOR_GREEN;
+    if (img_src == &ui_img_bouton_orange_png) return COLOR_ORANGE;
+    if (img_src == &ui_img_bouton_rouge_png) return COLOR_RED;
+    if (img_src == &ui_img_bouton_cyan_png) return COLOR_CYAN;
+    if (img_src == &ui_img_bouton_bleu_png) return COLOR_BLUE;
+    return COLOR_NONE; // Par défaut ou si noir
+}
+
+// Helper : Convertir un code couleur en image (pour le chargement NVS)
+static const void* get_img_from_color_code(uint32_t code) {
+    switch (code) {
+        case COLOR_GREEN: return &ui_img_bouton_vert_png;
+        case COLOR_ORANGE: return &ui_img_bouton_orange_png;
+        case COLOR_RED: return &ui_img_bouton_rouge_png;
+        case COLOR_CYAN: return &ui_img_bouton_cyan_png;
+        case COLOR_BLUE: return &ui_img_bouton_bleu_png;
+        default: return &ui_img_bouton_noir_png;
+    }
+}
+
+static lv_obj_t ** all_leds_array[] = {
+    &ui_PanelShift1, // LED 1
+    &ui_PanelShift2,
+    &ui_PanelShift3,
+    &ui_PanelShift4,
+    &ui_PanelShift5,
+    &ui_PanelShift6,
+    &ui_PanelShift7,
+    &ui_PanelShift8,
+    &ui_PanelShiftMaxi1,
+    &ui_PanelShiftMaxi2,
+    &ui_PanelShiftMaxi3,
+    &ui_PanelShiftMaxi4,
+    &ui_PanelShiftMaxi5,
+    &ui_PanelPOil,
+    &ui_PanelTempWater,
+    // ... ajoute les autres LEDs ici (Limiteur, RPM, etc.)
+    NULL // Toujours finir par NULL pour la sécurité
+};
+
 // Variable globale pour stocker la LED sélectionnée
 lv_obj_t * current_selected_led = NULL;
 
 static char console_text[32] = "";      // Buffer pour le texte affiché 
 //lv_obj_t *ui_console_label = NULL;      // Label pour afficher le texte
 extern lv_obj_t *ui_console_label;
+
+
+void save_global_config_to_nvs(void)
+{
+    nvs_handle_t my_handle;
+    esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
+    
+    if (err != ESP_OK) {    
+        printf("Erreur ouverture NVS (%s)\n", esp_err_to_name(err));
+        return;
+    }
+
+    int i = 0;
+    // On boucle tant qu'il y a des LEDs dans le tableau
+    while (all_leds_array[i] != NULL) {
+        lv_obj_t * led = *all_leds_array[i]; // Récupérer l'objet
+        
+        // 1. Récupérer l'image actuelle
+        const void * img_src = lv_obj_get_style_bg_img_src(led, LV_PART_MAIN);
+        
+        // 2. Convertir en code (0, 1, 2...) grâce à notre helper précédent
+        uint32_t color_code = get_color_code_from_img(img_src);
+        
+        // 3. Créer une clé unique basée sur l'index (led_0, led_1...)
+        char key[16];
+        sprintf(key, "led_%d", i);
+        
+        // 4. Écrire sans "commit" à chaque fois (plus rapide)
+        nvs_set_u32(my_handle, key, color_code);
+        
+        i++;
+    }
+
+    // 5. Valider et fermer une seule fois à la fin
+    nvs_commit(my_handle);
+    nvs_close(my_handle);
+    
+    printf("Sauvegarde globale terminee : %d LEDs sauvegardees.\n", i);
+}
+
+void load_global_config_from_nvs(void)
+{
+    nvs_handle_t my_handle;
+    esp_err_t err = nvs_open("storage", NVS_READONLY, &my_handle);
+    
+    if (err != ESP_OK) return; // Pas de sauvegarde trouvée ou erreur
+
+    int i = 0;
+    while (all_leds_array[i] != NULL) {
+        lv_obj_t * led = *all_leds_array[i];
+        
+        char key[16];
+        sprintf(key, "led_%d", i);
+        
+        uint32_t color_code = 0;
+        // Si la lecture échoue (ex: nouvelle LED ajoutée), on garde 0 par défaut
+        if (nvs_get_u32(my_handle, key, &color_code) == ESP_OK) {
+            
+            if (color_code != 0) { // Si ce n'est pas noir
+                const void * img_src = get_img_from_color_code(color_code);
+                
+                // Appliquer le style visuel
+                lv_obj_set_style_bg_img_src(led, img_src, LV_PART_MAIN | LV_STATE_DEFAULT);
+                lv_obj_set_style_opa(led, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+                lv_obj_set_style_bg_opa(led, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            }
+        }
+        i++;
+    }
+    
+    nvs_close(my_handle);
+    printf("Chargement global termine.\n");
+}
 
 // Fonction pour mémoriser quelle LED noire a été cliquée
 void set_target_led(lv_event_t * e) 
@@ -47,7 +164,9 @@ void _apply_color(const lv_img_dsc_t * img_src)
         lv_obj_set_style_bg_img_src(current_selected_led, img_src, LV_PART_MAIN | LV_STATE_DEFAULT);
 
         lv_obj_clear_state(current_selected_led, LV_STATE_CHECKED);
-        current_selected_led = NULL;   
+        current_selected_led = NULL;  
+        
+        check_and_auto_save();
     }
 }
 
@@ -131,6 +250,28 @@ void keyboard_7(lv_event_t * e){ keyboard_add_digit("7"); }
 void keyboard_8(lv_event_t * e){ keyboard_add_digit("8"); }
 void keyboard_9(lv_event_t * e){ keyboard_add_digit("9"); }
 
+void check_and_auto_save(void)
+{
+    int i = 0;
+    bool all_filled = true;
+
+    while (all_leds_array[i] != NULL) {
+        lv_obj_t * led = *all_leds_array[i];
+        const void * img_src = lv_obj_get_style_bg_img_src(led, LV_PART_MAIN);
+        
+        // Si une LED est encore noire, on ne sauvegarde pas encore
+        if (img_src == &ui_img_bouton_noir_png || img_src == NULL) {
+            all_filled = false;
+            break;
+        }
+        i++;
+    }
+
+    if (all_filled && i > 0) {
+        printf("Toutes les LEDs sont affectees. Sauvegarde automatique...\n");
+        save_global_config_to_nvs();
+    }
+}
 
 void add_key_highlighting(lv_obj_t * obj) 
 {

@@ -35,6 +35,23 @@ extern lv_obj_t *ui_LabelHeure2;
 extern lv_obj_t *ui_LabelSepHeureMin2;
 extern lv_obj_t *ui_LabelMin2;
 
+
+extern lv_obj_t *ui_PanelShift1;
+extern lv_obj_t *ui_PanelShift2;
+extern lv_obj_t *ui_PanelShift3;
+extern lv_obj_t *ui_PanelShift4;
+extern lv_obj_t *ui_PanelShift5;
+extern lv_obj_t *ui_PanelShift6;
+extern lv_obj_t *ui_PanelShift7;
+extern lv_obj_t *ui_PanelShift8;
+extern lv_obj_t *ui_PanelShiftMaxi1;
+extern lv_obj_t *ui_PanelShiftMaxi2;
+extern lv_obj_t *ui_PanelShiftMaxi3;
+extern lv_obj_t *ui_PanelShiftMaxi4;
+extern lv_obj_t *ui_PanelShiftMaxi5;
+extern lv_obj_t *ui_PanelPOil;
+extern lv_obj_t *ui_PanelTempWater;
+
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_LabelShift1;
 extern lv_obj_t *uic_LabelShift2;

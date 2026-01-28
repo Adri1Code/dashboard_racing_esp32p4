@@ -13,5 +13,5 @@ idf_component_register(
                 "fonts"
                 "images"
                 "screens"          
-    REQUIRES lvgl
+    REQUIRES lvgl nvs_flash
 )
