@@ -11,13 +11,14 @@
 #include "screen.h"
 #include "memory.h"
 #include "ui_manager.h"
+#include "ui.h"
 
 #define LOG_BREAK printf("\n")
 
 static const char *TAG = "APP_MAIN";
 
 void app_main(void)
-{ 
+{   
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
     {
@@ -36,13 +37,12 @@ void app_main(void)
     flash_static_analysis();
 
     DIR *dir = sd_card_mount();
-
     sd_card_scan(&dir);
 
     bsp_display_lock(0);                                 // verrouillage de LVGL pour manipuler les objets
 
     ui_manager_init();
-
+    
     bsp_display_unlock();                                // deverouillage de LVGL
 
     LOG_BREAK;

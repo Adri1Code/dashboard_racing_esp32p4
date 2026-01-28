@@ -4,7 +4,8 @@ idf_component_register(
     INCLUDE_DIRS 
         "."
     REQUIRES 
-        fatfs 
+        fatfs
+        ui 
         ui_manager 
         display_init
         sd_card 
